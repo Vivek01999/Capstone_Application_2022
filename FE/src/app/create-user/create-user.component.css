@@ -1,0 +1,22 @@
+.box {
+    text-align: center;
+    font-size: 24px;
+    width: 1365px;
+    border: 1px solid silver;
+    padding: 15px;
+    color : #00BFFF;
+    margin-right: auto;
+    margin-left : auto;
+  }
+
+  .formcenter{
+    margin : 150px;
+    margin-left : 450px;
+  
+  }
+  
+  .welcome{
+    font-size: 24px;
+    margin-left: 140px;
+  }
+  

@@ -1,0 +1,57 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Dashboard
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="new-project.component.css">
+ 	</head>
+ 	<body>
+ 		<div class="box1">
+ 			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome" style=" text-decoration: none;"> {{org}}</a></div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manager({{username}})</div>
+ 			<div style="position : absolute; left:1260px; top: 25px;">
+ 				<mat-menu #menu="matMenu">
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>dialpad</mat-icon> -->
+ 					<span>Settings</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>voicemail</mat-icon> -->
+ 					<span>Profile</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>notifications_off</mat-icon> -->
+ 					<span>Change Password</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 						<!-- <mat-icon>notifications_off</mat-icon> -->
+ 						<span><a routerLink="">Sign out</a></span>
+ 						</button>
+ 					</mat-menu>		  
+ 				</div>
+ 		</div>
+		 
+ 			<div class="box2 bluecolor" style="padding:180px">  <h1 style="width: 250px; position:absolute; left:50px; top: 60px" class ="hdr bluecolor"> <b>Create New Project</b></h1>
+				
+ 			<form action="createproject.html" action="GET">
+ 				<b>
+ 				<div style="left: 330px; position: absolute;"><img src="assets/img/cloudserver.png" width="30" height="30" alt="cloudserver"></div>
+ 				<div style="position:absolute; left:400px">Project Name</div><input type="text" name="projectName" [(ngModel)]="projectName" style="width: 250px; position:absolute; left:600px">
+ 				<br>
+ 				<br>
+ 				<br>
+ 				<div style="left: 330px; position: absolute;"><img src="assets/img/cloudserver.png" width="30" height="30" alt="cloudserver"></div>
+ 				<div style="position:absolute; left:400px">Project Description</div><input type="text" name="projectdesc" [(ngModel)]="projectdesc" style="width: 250px; position:absolute; left:600px">
+ 				<br>
+ 				<br>
+ 				<br>
+ 				<div style="left: 662px; top:362px; position: absolute;"><img _ngcontent-rje-c87="" src="assets/img/cloudserver.png" width="30" height="30" margin-top="-100" alt="cloudserver" style="margin-top: -50px;"></div>
+ 				<button type="submit" class="bluebutton" (click)="onSubmit()" style="position:absolute;left:720px">Create Project</button>
+ 			</b>			</form>
+ 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database black">Data Stored in Local DB</div></div>
+ 		</div>
+ 	</body>	
+ </html> 
+>>>>>>> 0d0f5206a16e18e4764a897052700c20fd2a80bd

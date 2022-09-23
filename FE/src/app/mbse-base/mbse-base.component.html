@@ -1,0 +1,85 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Dashboard
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="mbse-base.component.css">
+		 
+ 	</head>
+ 	<body>
+ 		<div class="box1">
+ 			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/admindashboard" style=" text-decoration: none;"> {{org}}</a>
+				<div id="model"><a routerLink="/modeldashboard" style=" text-decoration: none;"> Model </a></div> 
+			</div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> CSE({{username}})</div>
+ 			<div style="position : absolute; left:1260px; top: 25px;">
+ 				<mat-menu #menu="matMenu">
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>dialpad</mat-icon> -->
+ 					<span>Settings</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>voicemail</mat-icon> -->
+ 					<span>Profile</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>notifications_off</mat-icon> -->
+ 					<span>Change Password</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 						<!-- <mat-icon>notifications_off</mat-icon> -->
+ 						<span><a routerLink="">Sign out</a></span>
+ 						</button>
+ 					</mat-menu>		  
+ 				</div>
+ 		</div>
+ 			<div class="greencolor box2">
+ 			<div class="hdr">Create a New Base Model</div>
+ 			<div class="greencolor manager MBSELeftBox" style="position : relative; top: 10px;">
+ 					<form  method="POST" enctype="multipart/form-data" >
+ 						<div style="left: 50px; top:56px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"><div style="left: 50px; top:6px; position: absolute;">SelectProject</div></div> 
+ 						 <div style="position:absolute; top:56px; left: 400px;"><select name ="projectSelected" [(ngModel)]="projectSelected" style="width: 200px;">
+							<option *ngFor = "let project of projectSelectionOptions" value={{project.ID}}>{{project.Name}} </option>
+ 						  </select></div>
+ 						<div style="left: 50px; top:96px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div>
+ 						Model Name<div style="position:absolute; top:100px; left: 400px;"><input type="text" name="ModelName" [(ngModel)]="ModelName" style="width: 200px;"></div>
+ 						<br>
+ 						<br>
+ 						<div style="left: 50px; top:138px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div>
+ 						Model Description<div style="position:absolute; top:150px; left: 400px;"><input type="textarea" name="ModelDesc" [(ngModel)]="ModelDesc" style="width: 240px; height:65px;"></div>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<div  style="left: 50px; top:224px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div>
+ 						Model Documents<div style="position:absolute; top:230px; left: 400px;"></div>
+ 						<div *ngIf="!modelService.isMBSEBaseModelView" style="position:absolute; top:230px; left: 399px;"><input (change)="onfileUpload($event)" type="file" multiple  #multipleInput/>
+						<button *ngIf="!modelService.isMBSEBaseModelView"  class="button"  (click)="onMbseUpload()"  style="position:absolute;" >Upload</button></div>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+
+ 						<div *ngIf="!modelService.isMBSEBaseModelView" style="left: 450px; top:403px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div>
+ 						<button *ngIf="!modelService.isMBSEBaseModelView" type="submit" class="greenbutton"  (click)="onMbseSubmit()"  style="position:absolute; left:500px" >Submit</button>
+ 					</form>
+ 				</div>
+ 			<div class="ModelDocument" style="position : absolute; left:900px; top: 100px;">
+ 				<b>Model Document</b>
+				 <ul>
+					<li *ngFor='let eachPath of filepaths'>
+					  <a href="http://localhost:3000/getSingleFileDetails/{{this.eachPath.filename}}" download target="_blank">{{this.eachPath.originalname}}</a>
+					</li>
+				  </ul>
+ 			</div>
+ 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database blackcolor">Data Stored in Local DB</div></div>
+
+ 			</div>
+ 	</body>	
+ </html>

@@ -1,0 +1,45 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Application
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="create-user.component.css">
+ 	</head>
+ 	<body>
+ 		<div class="box">Consortium Application</div>
+ 		<form class="formcenter">
+ 			<div class = "border">
+ 			<div class="welcome" ><b>Create a Fabric User</b></div>
+ 			
+            <br>
+ 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="First Name" [(ngModel)]="first_name" placeholder="First Name">
+ 			<br>
+ 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Last Name" [(ngModel)]="last_name" placeholder="Last Name">
+            <br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Email Address" [(ngModel)]="email_address" placeholder="Email Address">
+            <br>
+ 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Username" [(ngModel)]="name" placeholder="Username">
+ 			<br>
+ 			<input type="password" name="Password" [(ngModel)]="password" class="form-control" id="exampleFormControlInput1" style="width: 500px;" placeholder="Password">
+ 			<br>
+ 			
+            Select the Organization:
+ 			<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
+ 				<option value="NASA">NASA</option>
+ 				<option value="UHCL">UHCL</option>
+ 				<option value="Tietronix">Tetronix</option>
+ 			</select>
+ 			  <br>
+ 			  <!-- {{selected}} -->
+ 			  <br>
+ 			<button class="btn btn-primary" (click)="createuser()"  type="submit" style="width: 500px;">Register</button>
+ 			</div>
+			 <p> 
+				<!-- space-->
+			</p>
+			 <a routerLink="/" class="text-primary" size = 40px style="text-decoration: none;">Login Instead? </a>
+ 		</form>
+ 	</body>	
+ </html> 
+

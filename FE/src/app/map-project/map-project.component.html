@@ -1,0 +1,65 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Dashboard
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="map-project.component.css">
+ 	</head>
+ 	<body>
+ 		<div class="box1">
+ 			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome" style=" text-decoration: none;"> {{org}}</a></div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manager({{username}})</div>
+ 			<div style="position : absolute; left:1260px; top: 25px;">
+ 				<mat-menu #menu="matMenu">
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>dialpad</mat-icon> -->
+ 					<span>Settings</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>voicemail</mat-icon> -->
+ 					<span>Profile</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>notifications_off</mat-icon> -->
+ 					<span>Change Password</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 						<!-- <mat-icon>notifications_off</mat-icon> -->
+ 						<span><a routerLink="">Sign out</a></span>
+ 						</button>
+ 					</mat-menu>		  
+ 				</div>
+ 		</div>
+ 			<div class="box2">
+                 <div class="hdr bluecolor">Assign Project</div>
+ 			<div class="bluecolor manager MBSELeftBox" style="position : relative; top: 10px;">
+ 					<form action="NewEmployee.html" action="GET">
+ 						<div style="left:140px; top:118px; position: absolute;"><img src="assets/img/cloudserver.png" width="30" height="30" alt="cloudserver"></div>
+ 						<div style="left:190px; top:120px; position: absolute;">Project</div><div style="position:absolute; top:120px; left: 440px;"><select name ="projectSelected" [(ngModel)]="projectSelected"  style="width: 200px;">
+							<option *ngFor = "let project of projectSelectionOptions" value={{project.ID}} >{{project.Name}} </option>
+ 						  </select></div>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<div style="left: 140px; top:203px; position: absolute;"><img src="assets/img/cloudserver.png" width="30" height="30" alt="cloudserver"></div>
+ 						<div style="left:190px; top:205px; position: absolute;">Add Organization</div><div style="position:absolute; top:205px; left: 440px;"><select name ="orgSelected" [(ngModel)]="orgSelected" style="width: 200px;">
+							<option *ngFor = "let org of orgSelectionOptions"  value={{org.OrgId}}>{{org.OrgName}}</option>
+						  </select></div>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+						<div  *ngIf="!ps.isProjectView"style="left: 450px; top:430px; position: absolute;"><img _ngcontent-qyd-c92="" src="assets/img/cloudserver.png" width="30" height="30" alt="cloudserver" style="margin-top: -295px;"></div>
+ 						<button *ngIf="!ps.isProjectView"  type="submit" class="bluebutton" (click)= "onSubmit()"  style="position:absolute;  top:275px; left:490px " >Add Organization</button>
+ 					</form>
+ 				</div>
+ 			<div class="ModelDocument" style="position:absolute; left:900px; top: 100px;">
+ 				<b style="font-size:20px; ">Organizations List</b>
+ 			</div>
+ 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div>
+
+ 			</div>
+ 	</body>	
+ </html> 

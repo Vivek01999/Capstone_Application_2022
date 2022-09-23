@@ -1,0 +1,43 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Dashboard
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="manager-home.component.css">
+ 	</head>
+ 	<body>
+ 	<div class="box1">
+ 		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome" style=" text-decoration: none;"> {{org}}</a></div>
+ 		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manger({{username}})</div>
+ 		<div style="position : absolute; left:1260px; top: 25px;">
+ 			<mat-menu #menu="matMenu">
+ 				<button mat-menu-item>
+ 				<!-- <mat-icon>dialpad</mat-icon> -->
+ 				<span>Settings</span>
+ 				</button>
+ 				<button mat-menu-item>
+ 				<!-- <mat-icon>voicemail</mat-icon> -->
+ 				<span>Profile</span>
+ 				</button>
+ 				<button mat-menu-item>
+ 				<!-- <mat-icon>notifications_off</mat-icon> -->
+ 				<span>Change Password</span>
+ 				</button>
+ 				<button mat-menu-item>
+ 					<!-- <mat-icon>notifications_off</mat-icon> -->
+ 					<span><a routerLink="">Sign out</a></span>
+ 					</button>
+ 				</mat-menu>		  
+ 			</div>
+ 	</div>
+ 		<div class="box2">
+ 			<!-- <a routerLink="/modeldashboard" style=" text-decoration: none;"><div class="rectangleGreenBox" style="position : absolute; left:750px; top:300px;"><div style="left: 190px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div><br><mat-icon class="icon-display"> local_hospital</mat-icon> <br><br><div class="greencolor">Model</div></div></a>  -->
+             <a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:300px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">sor_account</mat-icon><br><br><div class="bluecolor">User</div></div></a>
+			 <a routerLink="/projectdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:750px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">assignment</mat-icon><br><br><div class="bluecolor">Project</div></div> </a>
+
+ 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div>
+ 		</div>		
+ 	</body>	
+ </html>

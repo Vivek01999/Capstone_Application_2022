@@ -1,0 +1,37 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Application
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="login.component.css">
+ 	</head>
+ 	<body>
+ 		<div class="box">Consortium Application</div>
+ 		<form class="formcenter">
+ 			<div class = "border">
+ 			<div class="welcome" ><b>Welcome</b></div>
+ 			<br>
+ 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Username" [(ngModel)]="Username" placeholder="Username">
+ 			<br>
+ 			<input type="password" name="Password" [(ngModel)]="Password" class="form-control" id="exampleFormControlInput1" style="width: 500px;" placeholder="Password">
+ 			<br>
+ 			Select the Organization:
+ 			<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
+ 				<option value="NASA">NASA</option>
+ 				<option value="UHCL">UHCL</option>
+ 				<option value="Tietronix">Tetronix</option>
+ 			</select>
+ 			  <br>
+ 			  <!-- {{selected}} -->
+ 			  <br>
+ 			<button class="btn btn-primary" (click)="onLoginSubmit()"  type="submit" style="width: 500px;">Login</button>
+ 			</div>
+			 <p> 
+				<!-- space-->
+			</p>
+			 <a routerLink="/create-user" class="text-primary" size = 40px style="text-decoration: none;">Create User? </a>
+ 		</form>
+ 	</body>	
+ </html> 
+

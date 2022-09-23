@@ -1,0 +1,59 @@
+<html>
+ 	<head>	
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 		<link rel="stylesheet" href="mbse-variant-model-list.component.css">
+ 	</head>
+ 	<body>
+ 		<div class="box1">
+ 			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/admindashboard" style=" text-decoration: none;"> {{org}}</a>
+				<div id="model"><a routerLink="/modeldashboard" style=" text-decoration: none;"> Model </a></div> 	
+			</div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> CSE({{username}})</div>
+ 			<div style="position : absolute; left:1260px; top: 25px;">
+ 				<mat-menu #menu="matMenu">
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>dialpad</mat-icon> -->
+ 					<span>Settings</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>voicemail</mat-icon> -->
+ 					<span>Profile</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 					<!-- <mat-icon>notifications_off</mat-icon> -->
+ 					<span>Change Password</span>
+ 					</button>
+ 					<button mat-menu-item>
+ 						<!-- <mat-icon>notifications_off</mat-icon> -->
+ 						<span><a routerLink="">Sign out</a></span>
+ 						</button>
+ 					</mat-menu>		  
+ 				</div>
+ 		</div>
+ 			<div class="box2">
+ 			<br>
+ 			<table class="table">
+ 			<thead class="thead-light">
+ 				<tr class="table-active">
+ 				  <th scope="col">TemplateID</th>
+ 				  <th scope="col">Model Name</th>
+ 				  <th scope="col">Creator</th>
+ 				  <th scope="col">Created Date</th>
+ 				  <th scope="col">Actions</th>
+ 				</tr>
+ 			</thead>
+			 <tbody>
+				<tr *ngFor="let item of variantModelListData">
+					<td>{{item.MVMD_Id}}</td>
+					<td>{{item.MVMD_Name}}</td>
+					<td>{{item.Creator}}</td>
+					<td>{{item['Created Date'] | date: 'shortDate':'UTC'}} </td>
+					<td><a (click)="viewVarientModel(item)">View</a></td>
+				</tr>
+			 </tbody>
+ 			</table>
+ 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div>
+ 		</div>
+ 	</body>	
+ </html>
