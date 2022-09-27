@@ -36,6 +36,9 @@ import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home
 import { ManagerHomeComponent } from './manager-home/manager-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
+import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { CreateUserComponent } from './create-user/create-user.component';
     ManagerProjectHomeComponent,
     ManagerHomeComponent,
     ManagerProjectListComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    FabricUserListComponent,
+    UpdateFabricUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule, 
