@@ -45,6 +45,10 @@ const {
   registerFabricUser
 } = require("./handlers/Register");
 
+const {
+  getFabricUser
+} = require("./handlers/getFabricUser");
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -102,6 +106,7 @@ app.get("/getFileDetails/:docId", cors(), getFileDetails);
 app.get("/getSingleFileDetails/:fileName", cors(), getSingleFileDetails);
 app.get("/getSingleFileDetails/uploads/:fileName", cors(), getSingleFileDetails);
 app.post("/registerUser", registerFabricUser);
+app.post("/getFabricUser", getFabricUser);
 
 app.listen(port, () => {
   console.log(db.CreateConnection)
