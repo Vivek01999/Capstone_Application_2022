@@ -1,7 +1,7 @@
 var pg = require('pg')
 
 const config = {
-    connectionString: "postgres://ysvgycyzkszbrp:9c18ee791514322a3fd14b3642850061366465eef3f976d19e98bac9d68999b3@ec2-3-209-61-239.compute-1.amazonaws.com:5432/d5bvmu0afudmj", // please udpate with connection string
+    connectionString: "postgres://travis:travisfall2022@capstone-fall2022-db.c2t3s8vrahet.us-west-1.rds.amazonaws.com:5432/postgres", // please udpate with connection string
     ssl: {
       rejectUnauthorized: false
     }
