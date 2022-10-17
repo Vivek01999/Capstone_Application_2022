@@ -39,6 +39,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
+
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     CreateUserComponent,
     FabricUserListComponent,
     UpdateFabricUserComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    UserlistComponent,
+    DeleteFabricUserComponent
   ],
   imports: [
     BrowserModule, 

@@ -25,6 +25,9 @@ import { ManagerHomeComponent } from './manager-home/manager-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CanActivateTeam } from './canactivate';
 import { CreateUserComponent } from './create-user/create-user.component'
+import { UserlistComponent } from './userlist/userlist.component';
+import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [CanActivateTeam] },
@@ -47,8 +50,9 @@ const routes: Routes = [
   { path: 'CSEProjectHome', component: ManagerProjectHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerHome', component: ManagerHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
-  { path: 'create-user', component: CreateUserComponent }
-
+  { path: 'create-user', component: CreateUserComponent },
+  { path: 'userList', component: UserlistComponent},
+  { path: 'updateFabricUser', component: UpdateFabricUserComponent}
 ];
 
 

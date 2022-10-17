@@ -7,29 +7,33 @@
  		<link rel="stylesheet" href="create-user.component.css">
  	</head>
  	<body>
- 		<div class="box">Consortium Application</div>
  		<form class="formcenter">
  			<div class = "border">
- 			<div class="welcome" ><b>Create a Fabric User</b></div>
+ 			<div class="welcome" ><b>Create an Admin</b></div>
  			
             <br>
- 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="First Name" [(ngModel)]="first_name" placeholder="First Name">
- 			<br>
- 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Last Name" [(ngModel)]="last_name" placeholder="Last Name">
-            <br>
-            <input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Email Address" [(ngModel)]="email_address" placeholder="Email Address">
-            <br>
- 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Username" [(ngModel)]="username" placeholder="Username">
- 			<br>
- 			<input type="password" name="Password" [(ngModel)]="password" class="form-control" id="exampleFormControlInput1" style="width: 500px;" placeholder="Password">
- 			<br>
- 			
+			Select a Username: 
+			<p> 
+				
+			</p>
+ 			<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
+				<option>--Select a Username--</option>
+				<option *ngFor="let item of EmployeeListData">
+					{{item.Username}}
+				</option>
+ 			</select>
+			<br>
+			<br>
             Select the Organization:
+			<p> 
+
+			</p>
  			<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
  				<option value="NASA">NASA</option>
  				<option value="UHCL">UHCL</option>
  				<option value="Tietronix">Tetronix</option>
  			</select>
+
  			  <br>
  			  <!-- {{selected}} -->
  			  <br>
@@ -37,6 +41,8 @@
  			</div>
 			 <p> 
 				<!-- space-->
+				<br>
+				{{response}}
 			</p>
  		</form>
  	</body>	

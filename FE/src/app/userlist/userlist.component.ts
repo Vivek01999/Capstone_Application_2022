@@ -4,10 +4,10 @@ import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 
 @Component({
   selector: 'app-employeelist',
-  templateUrl: './update-fabric-user.component.html',
-  styleUrls: ['./update-fabric-user.component.css']
+  templateUrl: './userlist.component.html',
+  styleUrls: ['./userlist.component.css']
 })
-export class UpdateFabricUserComponent implements OnInit {
+export class UserlistComponent implements OnInit {
 
   org : string = "";
   username: string = "";
