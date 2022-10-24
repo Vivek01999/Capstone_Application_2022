@@ -24,8 +24,24 @@ export class CreateUserComponent implements OnInit {
   
   createuser() {
     const payload = {
-      "userName": this.username,
-      "orgName": "ca.org1.example.com"
+
+      "common":{
+        "wallet": "wallet",
+        "organisationMSP": "Org1MSP",
+        "networkChannel":"mychannel",
+        "smartContract":"fabcar"
+      },
+      "adminEnroll": {
+        "caAuth": "ca.org1.example.com",
+        "wallet": "wallet",
+        "adminIdentity": "admin",
+        "adminSecret": "adminpw"
+      },
+      "registerUser": {
+        "userIdentity":this.username,
+        "role":"CSE",
+        "affiliation": "org1.department1"
+      }
     }
     this.registerService.registerUser(payload).subscribe(res => {
       if (res) {

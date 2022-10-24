@@ -2,5 +2,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "install-peers": "^1.0.4"
   }
 }

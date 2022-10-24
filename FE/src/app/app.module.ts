@@ -41,6 +41,7 @@ import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-us
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
@@ -83,7 +84,8 @@ import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-us
     MatMenuModule,
     MatIconModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [ MyTestService, AuthenticationService,MapEmployeeService, GetAllEmployeesservice],
   bootstrap: [AppComponent]

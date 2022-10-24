@@ -19,4 +19,24 @@ export class RegisterService {
         })
       );
   }
+
+  getUserList(payload: any) {
+    const url = `${environment.API_URL}/getUserList`;
+    return this.http.post(url, payload)
+      .pipe(
+        tap((result: any) => {
+          return result;
+        })
+      );
+  }
+
+  deleteUser(payload: any) {
+    const url = `${environment.API_URL}/deleteUser`;
+    return this.http.post(url, payload)
+      .pipe(
+        tap((result: any) => {
+          return result;
+        })
+      );
+  }
 }

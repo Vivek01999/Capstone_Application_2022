@@ -34,27 +34,16 @@
  			<thead class="thead-dark">
  				<tr class="table-active">
  				  <th scope="col">Name</th>
-
- 				  <th scope="col">User Name</th>
-
- 				  <th scope="col">Role</th>
-
- 				  <th scope="col">CreatedBy</th>
-				   
- 				  <th scope="col">CreatedDate</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Status</th>
+				  <th scope="col">Delete </th>
  				</tr>
  			</thead>
 			 <tbody>
-				<tr *ngFor="let item of EmployeeListData ">
-					<td>{{item.Name}}</td>
-					<td>{{item.Username}}</td>
-					<td>{{item.EmployeeRoleID}}</td>
-					<td>{{item.created_by}}</td>
-					<td>{{item.created_date}}</td>
+				<tr *ngFor="let item of userListData ">
+					<td>{{item}}</td>
                     <td> 
-						<img src="assets/img/edit.png"  routerLink = "/updateFabricUser" width="35" height="30" alt="edit">
+						<img (click)="navigateToUpdateFabricUser(item)" src ="assets/img/edit.png" width="35" height="30" alt="edit">
                     </td>
                     <td> 
 						<!-- <div class="form-group">
@@ -64,10 +53,14 @@
 							</div>
 						</div> -->
                         <label class="switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state'>
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state' checked>
                             <span class="slider round"></span>
                           </label>
                     </td>
+					<td> 
+						<img (click)="deleteUser(item);openSnackBar(item)" src="assets/img/delete.png" width="35" height="30" alt="delete">
+						<!-- <button mat-stroked-button (click)="openSnackBar(item)">Show snack-bar</button> -->
+					</td>
 				</tr>
 			 </tbody>
  			</table>

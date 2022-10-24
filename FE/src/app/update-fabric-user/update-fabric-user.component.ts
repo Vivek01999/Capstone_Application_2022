@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MyTestService } from '../my-test.service';
 import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 
@@ -10,13 +11,14 @@ import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 export class UpdateFabricUserComponent implements OnInit {
 
   org : string = "";
-  username: string = "";
+  username: any = "";
   public EmployeeListData: any[] = [];
-  constructor(private ts : MyTestService, private getallemployeeservice: GetAllEmployeesservice) { 
+  constructor(private route: ActivatedRoute ,private ts : MyTestService, private getallemployeeservice: GetAllEmployeesservice) { 
     this.org= ts.getInfo();
     this.username= ts.getUser();
   }
   ngOnInit(): void {
+    this.username = this.route.snapshot.paramMap.get("userIdentity");
     this.getEmployeeListData();
   }
   getEmployeeListData() {

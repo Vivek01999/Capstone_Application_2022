@@ -42,7 +42,7 @@ const {
 } = require("./handlers/Project");
 
 const {
-  registerFabricUser
+  registerFabricUser,deleteUser, getUserList
 } = require("./handlers/Register");
 
 const {
@@ -112,6 +112,8 @@ app.get("/getSingleFileDetails/uploads/:fileName", cors(), getSingleFileDetails)
 app.post("/registerUser", registerFabricUser);
 app.get("/getFabricUser", getFabricUser);
 app.post("/fabUsrChangePassword", fabUsrChangePassword);
+app.post("/getUserList", cors(),getUserList);
+app.post("/deleteUser", cors(),deleteUser);
 
 app.listen(port, () => {
   console.log(db.CreateConnection)
