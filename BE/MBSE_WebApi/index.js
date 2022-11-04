@@ -42,8 +42,8 @@ const {
 } = require("./handlers/Project");
 
 const {
-  registerFabricUser,deleteUser, getUserList
-} = require("./handlers/Register");
+  registerFabricUser,deleteUser, getUserList, updateFabricUser
+} = require("./handlers/FabricEndPoints");
 
 const {
   getFabricUser
@@ -113,6 +113,7 @@ app.post("/registerUser", registerFabricUser);
 app.get("/getFabricUser", getFabricUser);
 app.post("/fabUsrChangePassword", fabUsrChangePassword);
 app.post("/getUserList", cors(),getUserList);
+app.post("/updateFabricUser", cors(),updateFabricUser);
 app.post("/deleteUser", cors(),deleteUser);
 
 app.listen(port, () => {

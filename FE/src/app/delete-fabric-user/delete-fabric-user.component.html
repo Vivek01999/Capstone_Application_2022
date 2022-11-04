@@ -1,1 +1,69 @@
-<p>delete-fabric-user works!</p>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="delete-fabric-user.component.css">
+</head>
+
+<body>
+    <div class="box1">
+        <div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome"
+                style=" text-decoration: none;"> {{org}}</a></div>
+        <div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
+            <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
+            Manager({{username}})
+        </div>
+        <div style="position : absolute; left:1260px; top: 25px;">
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <!-- <mat-icon>dialpad</mat-icon> -->
+                    <span>Settings</span>
+                </button>
+                <button mat-menu-item>
+                    <!-- <mat-icon>voicemail</mat-icon> -->
+                    <span>Profile</span>
+                </button>
+                <button mat-menu-item>
+                    <!-- <mat-icon>notifications_off</mat-icon> -->
+                    <span>Change Password</span>
+                </button>
+                <button mat-menu-item>
+                    <!-- <mat-icon>notifications_off</mat-icon> -->
+                    <span><a routerLink="">Sign out</a></span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <form class="formcenter">
+        <div class="border">
+            <br>
+            <div class="welcome"><b>Delete Fabric User</b></div>
+            <br>
+            <br>
+            <form class="cen">
+                <label for="UserIdentity">User Identity</label><br>
+                <input type="text" name="userIdentity" [(ngModel)]="userIdentity" readonly><br>
+                <label for="reason">Reason</label><br>
+                <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+                    name="reason" [(ngModel)]="reason">
+                    <option value="unspecified">unspecified</option>
+                    <option value="keycompromise">keycompromise</option>
+                    <option value="cacompromise">cacompromise</option>
+                    <option value="affiliationchanged">affiliationchanged</option>
+                    <option value="superseded">superseded</option>
+                    <option value="cessationofoperation">cessationofoperation</option>
+                    <option value="certificatehold">certificatehold</option>
+                    <option value="removefromcrl">removefromcrl</option>
+                    <option value="privilegewithdrawn">privilegewithdrawn</option>
+                    <option value="aacompromise">aacompromise</option>
+                </select>
+            </form>
+            <br>
+            <br>
+            <button (click)="deleteFabricUser()" class="btn btn-primary" type="submit" style="width: 500px;margin-left: 100px;background-color:#eb1f1f;">Delete</button>
+        </div>
+        <br>
+    </form>
+</body>
+
+</html>

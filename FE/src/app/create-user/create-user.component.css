@@ -11,13 +11,63 @@
 
   .formcenter{
     margin : 150px;
-    margin-left : 450px;
-  
+    margin-left : 400px;
+    max-width: 700px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
   }
   
   .welcome{
     font-size: 24px;
-    margin-left: 140px;
+    margin-left: 225px;
+    
   }
   
+  input[type=text] {
+    width: 84%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+  input[type=password] {
+    width: 84%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  
+  input[type=password]:focus {
+    border: 3px solid #555;
+  }
+  .cen{
+    margin-left: 100px;
+  }
+
+  select[type=text] {
+    width: 20%;
+    height: 40px;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  
+  select[type=text]:focus {
+    border: 3px solid #555;
+  }
  

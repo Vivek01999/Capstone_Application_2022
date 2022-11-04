@@ -1,73 +1,83 @@
 <html>
- 	<head>	
- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 		<link rel="stylesheet" href="userlist.component.css">
- 	</head>
- 	<body>
- 		<div class="box1">
- 			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome" style=" text-decoration: none;"> {{org}}</a></div>
- 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manager({{username}})</div>
- 			<div style="position : absolute; left:1260px; top: 25px;">
- 				<mat-menu #menu="matMenu">
- 					<button mat-menu-item>
- 					<!-- <mat-icon>dialpad</mat-icon> -->
- 					<span>Settings</span>
- 					</button>
- 					<button mat-menu-item>
- 					<!-- <mat-icon>voicemail</mat-icon> -->
- 					<span>Profile</span>
- 					</button>
- 					<button mat-menu-item>
- 					<!-- <mat-icon>notifications_off</mat-icon> -->
- 					<span>Change Password</span>
- 					</button>
- 					<button mat-menu-item>
- 						<!-- <mat-icon>notifications_off</mat-icon> -->
- 						<span><a routerLink="">Sign out</a></span>
- 						</button>
- 					</mat-menu>		  
- 				</div>
- 		</div>
- 			<div class="box2" >
- 			<br>
- 			<table class="table" >
- 			<thead class="thead-dark">
- 				<tr class="table-active">
- 				  <th scope="col">Name</th>
-                  <th scope="col">Edit</th>
-                  <th scope="col">Status</th>
-				  <th scope="col">Delete </th>
- 				</tr>
- 			</thead>
-			 <tbody>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="userlist.component.css">
+</head>
+
+<body>
+	<div class="box1">
+		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/ManagerHome"
+				style=" text-decoration: none;"> {{org}}</a></div>
+		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
+			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
+			Manager({{username}})
+		</div>
+		<div style="position : absolute; left:1260px; top: 25px;">
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<!-- <mat-icon>dialpad</mat-icon> -->
+					<span>Settings</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>voicemail</mat-icon> -->
+					<span>Profile</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span>Change Password</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span><a routerLink="">Sign out</a></span>
+				</button>
+			</mat-menu>
+		</div>
+	</div>
+	<div class="box2">
+		<br>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr class="table-active">
+					<th scope="col">Fabric User ID</th>
+					<th scope="col">Fabric Role</th>
+					<th scope="col">Edit</th>
+					<!-- <th scope="col">Status</th> -->
+					<th scope="col">Delete </th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr *ngFor="let item of userListData ">
-					<td>{{item}}</td>
-                    <td> 
-						<img (click)="navigateToUpdateFabricUser(item)" src ="assets/img/edit.png" width="35" height="30" alt="edit">
-                    </td>
-                    <td> 
-						<!-- <div class="form-group">
-							<div class="custom-control custom-switch">
-							  <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state'>
-							  <label class="custom-control-label" id="statusText" for="customSwitch1"></label>
-							</div>
-						</div> -->
+					<td>{{item.id}}</td>
+					<td>{{item.type}}</td>
+					
+					<td>
+						<button mat-button [disabled]="['admin', 'peer0', 'user1', 'org1admin'].includes(item.id)" (click)="navigateToUpdateFabricUser(item)">
+							<mat-icon>edit</mat-icon>
+						</button>
+					</td>
+					<!-- <td> 
                         <label class="switch">
                             <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state' checked>
                             <span class="slider round"></span>
                           </label>
-                    </td>
-					<td> 
-						<img (click)="deleteUser(item);openSnackBar(item)" src="assets/img/delete.png" width="35" height="30" alt="delete">
+                    </td> -->
+					<td>
+						<button mat-button color="warn" [disabled]="['admin', 'peer0', 'user1', 'org1admin'].includes(item.id)" (click)="navigateToDeleteFabricUser(item)">
+							<mat-icon>delete</mat-icon>
+						</button>
+						<!-- (click)="deleteUser(item);openSnackBar(item)" -->
 						<!-- <button mat-stroked-button (click)="openSnackBar(item)">Show snack-bar</button> -->
 					</td>
 				</tr>
-			 </tbody>
- 			</table>
- 		</div>
-            <button class="btn btn-primary" routerLink="/create-user" type="submit" style="margin-top:20px; margin-left: 480px;width: 500px;">Create a Fabric User</button>
+			</tbody>
+		</table>
+	</div>
+	<button class="btn btn-primary" routerLink="/create-user" type="submit"
+		style="margin-top:20px; margin-left: 480px;width: 500px;">Create a Fabric User</button>
 
-            <br>
-            <button class="btn btn-primary"  type="submit" style="margin-top:20px; margin-left: 480px;width: 500px;">Enroll Admin</button>
- 	</body>	
- </html> 
+	<br>
+	<!-- <button class="btn btn-primary"  type="submit" style="margin-top:20px; margin-left: 480px;width: 500px;">Enroll Admin</button> -->
+</body>
+
+</html>

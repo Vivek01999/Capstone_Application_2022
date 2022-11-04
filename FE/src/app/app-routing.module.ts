@@ -27,6 +27,7 @@ import { CanActivateTeam } from './canactivate';
 import { CreateUserComponent } from './create-user/create-user.component'
 import { UserlistComponent } from './userlist/userlist.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
+import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -52,7 +53,8 @@ const routes: Routes = [
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'userList', component: UserlistComponent},
-  { path: 'updateFabricUser', component: UpdateFabricUserComponent}
+  { path: 'updateFabricUser', component: UpdateFabricUserComponent},
+  { path: 'deleteFabricUser', component: DeleteFabricUserComponent}
 ];
 
 

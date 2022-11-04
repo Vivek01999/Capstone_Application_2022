@@ -42,6 +42,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { UserlistComponent } from './userlist/userlist.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
 
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
@@ -85,7 +86,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers: [ MyTestService, AuthenticationService,MapEmployeeService, GetAllEmployeesservice],
   bootstrap: [AppComponent]

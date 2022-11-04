@@ -9,21 +9,38 @@
  	<body>
  		<form class="formcenter">
  			<div class = "border">
+				<br>
  			<div class="welcome" ><b>Create an Fabric User</b></div>
- 			
+			<br>
+			<br>
+ 			<form class="cen">
+				<label for="UserIdentity">User Identity</label><br>
+				<input type="text" id="UserIdentity" name="UserIdentity" [(ngModel)]="userIdentity" value=""><br>
+				<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
+				<option>--Select a Local User Identity--</option>
+				<option *ngFor="let item of EmployeeListData">
+					{{item.Username}}
+				</option>
+ 				</select> -->
+				 <label for="role">Role</label><br>
+				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+				 name="role" [(ngModel)]="role">
+				 <option value="peer">peer</option>
+				 <option value="client">client</option>
+			 </select>
+				<!-- <input type="text" id="role" name="role" [(ngModel)]="role"value=""><br> -->
+				<label for="affiliation">Affliation</label><br>
+				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"value=""><br>
+			  </form>
             <br>
-			Select a Username: 
-			<p> 
-				
-			</p>
- 			<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
+ 			<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
 				<option>--Select a Username--</option>
 				<option *ngFor="let item of EmployeeListData">
 					{{item.Username}}
 				</option>
  			</select>
 			<br>
-			
+
 			<br>
             Select the Organization:
 			<p> 
@@ -33,12 +50,12 @@
  				<option value="NASA">NASA</option>
  				<option value="UHCL">UHCL</option>
  				<option value="Tietronix">Tetronix</option>
- 			</select>
+ 			</select> -->
 
  			  <br>
  			  <!-- {{selected}} -->
  			  <br>
- 			<button class="btn btn-primary" (click)="createuser()"  type="submit" style="width: 500px;">Register</button>
+ 			<button class="btn btn-primary" (click)="createuser()"  type="submit" style="width: 500px;margin-left: 100px">Register & Enroll</button>
  			</div>
 			 <p> 
 				<!-- space-->

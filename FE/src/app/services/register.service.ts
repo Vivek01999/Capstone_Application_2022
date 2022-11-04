@@ -39,4 +39,14 @@ export class RegisterService {
         })
       );
   }
+
+  updateUser(payload: any) {
+    const url = `${environment.API_URL}/updateFabricUser`;
+    return this.http.post(url, payload)
+      .pipe(
+        tap((result: any) => {
+          return result;
+        })
+      );
+  }
 }
