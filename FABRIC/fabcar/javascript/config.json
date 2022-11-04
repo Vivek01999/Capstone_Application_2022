@@ -1,0 +1,22 @@
+   {
+	"common":{
+		"wallet": "wallet",
+		"organisationMSP": "Org1MSP",
+		"networkChannel":"mychannel",
+		"smartContract":"fabcar"
+	},
+	"adminEnroll": {
+		"caAuth": "ca.org1.example.com",
+		"wallet": "wallet",
+		"adminIdentity": "admin",
+		"adminSecret": "adminpw"
+	},
+	"registerUser": {
+		"userIdentity":"",
+		"role":"",
+		"affiliation": ""
+	},
+	"deleteUser":{
+		"reason": "unspecified"
+	}
+}

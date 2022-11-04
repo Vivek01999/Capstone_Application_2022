@@ -1,0 +1,1 @@
+[31m2022-11-01 09:47:17.880 CDT 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because error when setting up MSP of type bccsp from directory /Users/vivekkukkapalli/Desktop/Capstone_Application_2022/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp: KeyMaterial not found in SigningIdentityInfo
