@@ -1,11 +1,15 @@
 const app = require("express")();
 const cors = require("cors");
+
+const express = require("express");
+const bodyParser = require('body-parser')
 app.use(cors());
 const port = 3000
 
-const {
-  getUserDetails
-} = require("./handlers/users");
+app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+
+const { getUserDetails } = require("./handlers/users");
 const db = require("./util/db");
 const {
   getEmployeeDetails,
@@ -42,7 +46,7 @@ const {
 } = require("./handlers/Project");
 
 const {
-  registerFabricUser,deleteUser, getUserList, updateFabricUser
+  registerFabricUser, deleteUser, getUserList, updateFabricUser
 } = require("./handlers/FabricEndPoints");
 
 const {
@@ -56,21 +60,6 @@ const {
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-var express = require("express");
-var bodyParser = require('body-parser')
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
-app.use(bodyParser.json())
-
-// multer package to recive multipart data in POST requests -> start here
-
-const { path } = require("express/lib/application");
-app.use(express.urlencoded({ extended: true }));
-// app.use(upload.array());
-// app.use(express.static('public'));
-//multer package to recive multipart data in POST requests -> ends here
 
 // users routes
 // app.post("/signup", signup);
@@ -112,9 +101,9 @@ app.get("/getSingleFileDetails/uploads/:fileName", cors(), getSingleFileDetails)
 app.post("/registerUser", registerFabricUser);
 app.get("/getFabricUser", getFabricUser);
 app.post("/fabUsrChangePassword", fabUsrChangePassword);
-app.post("/getUserList", cors(),getUserList);
-app.post("/updateFabricUser", cors(),updateFabricUser);
-app.post("/deleteUser", cors(),deleteUser);
+app.post("/getUserList", cors(), getUserList);
+app.post("/updateFabricUser", cors(), updateFabricUser);
+app.post("/deleteUser", cors(), deleteUser);
 
 app.listen(port, () => {
   db.CreateConnection();
