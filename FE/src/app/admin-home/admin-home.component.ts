@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MyTestService } from '../my-test.service';
 @Component({
-  selector: 'app-manager-home',
-  templateUrl: './manager-home.component.html',
-  styleUrls: ['./manager-home.component.css']
+  selector: 'app-admin-home',
+  templateUrl: './admin-home.component.html',
+  styleUrls: ['./admin-home.component.css']
 })
-export class ManagerHomeComponent implements OnInit {
+export class AdminHomeComponent implements OnInit {
   menu: string ="GK";
   org : string = "";
   username: string = "";

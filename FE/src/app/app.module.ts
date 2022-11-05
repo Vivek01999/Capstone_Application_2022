@@ -1,7 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ApiInterceptor } from '../Interceptor/http-interceptor';
 import {AuthenticationService} from './services/AuthenticationService.service';
 import { MapEmployeeService } from './services/MapEmployee.service';
 import{GetAllEmployeesservice} from './services/GetAllEmployees.sercvice';
@@ -33,7 +32,7 @@ import { OrgProjectComponent } from './org-project/org-project.component';
 import { MbseBaseModelListComponent } from './mbse-base-model-list/mbse-base-model-list.component';
 import { MbseVariantModelListComponent } from './mbse-variant-model-list/mbse-variant-model-list.component';
 import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home.component';
-import { ManagerHomeComponent } from './manager-home/manager-home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component';
 import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
@@ -67,7 +66,7 @@ import {MatButtonModule} from '@angular/material/button';
     MbseBaseModelListComponent,
     MbseVariantModelListComponent,
     ManagerProjectHomeComponent,
-    ManagerHomeComponent,
+    AdminHomeComponent,
     ManagerProjectListComponent,
     CreateFabricUserIdentityComponent,
     FabricUserListComponent,
@@ -93,7 +92,5 @@ import {MatButtonModule} from '@angular/material/button';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function getBaseUrl() {
-  return 'http:localhost:3000';
-}
+
 export const routingComponents = {AdminDashboardComponent,UserHomepageComponent,ModelHomepageComponent,ManagerProjectHomeComponent}

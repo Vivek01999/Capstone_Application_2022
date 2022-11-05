@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
 import { MbseBaseModelListComponent } from './mbse-base-model-list/mbse-base-model-list.component';
 import { MbseVariantModelListComponent } from './mbse-variant-model-list/mbse-variant-model-list.component';
 import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home.component';
-import { ManagerHomeComponent } from './manager-home/manager-home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CanActivateTeam } from './canactivate';
 import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component'
@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'newemployee', component: NewEmployeeComponent, canActivate: [CanActivateTeam] },
   { path: 'employeelist', component: EmployeelistComponent, canActivate: [CanActivateTeam] },
   { path: 'CSEProjectHome', component: ManagerProjectHomeComponent, canActivate: [CanActivateTeam] },
-  { path: 'ManagerHome', component: ManagerHomeComponent, canActivate: [CanActivateTeam] },
+  { path: 'adminHome', component: AdminHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
   { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent },
   { path: 'userList', component: UserlistComponent},
