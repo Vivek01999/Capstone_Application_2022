@@ -117,7 +117,6 @@ app.post("/updateFabricUser", cors(),updateFabricUser);
 app.post("/deleteUser", cors(),deleteUser);
 
 app.listen(port, () => {
-  console.log(db.CreateConnection)
   db.CreateConnection();
   console.log(`Example app listening on port ${port}`)
 })
