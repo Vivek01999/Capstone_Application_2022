@@ -1,5 +1,5 @@
 {
-  "name": "MBAF_WebApi",
+  "name": "mbse_webapi",
   "description": "Cloud Functions for Firebase",
   "scripts": {
     "serve": "firebase emulators:start --only functions",
