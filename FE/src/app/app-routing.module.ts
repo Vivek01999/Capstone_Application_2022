@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AdminDashboardComponent } from './CSE-dashboard/admin-dashboard.component';
 import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
@@ -24,7 +24,7 @@ import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home
 import { ManagerHomeComponent } from './manager-home/manager-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CanActivateTeam } from './canactivate';
-import { CreateUserComponent } from './create-user/create-user.component'
+import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component'
 import { UserlistComponent } from './userlist/userlist.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'CSEProjectHome', component: ManagerProjectHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerHome', component: ManagerHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
-  { path: 'create-user', component: CreateUserComponent },
+  { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent },
   { path: 'userList', component: UserlistComponent},
   { path: 'updateFabricUser', component: UpdateFabricUserComponent},
   { path: 'deleteFabricUser', component: DeleteFabricUserComponent}

@@ -35,7 +35,7 @@ import { MbseVariantModelListComponent } from './mbse-variant-model-list/mbse-va
 import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home.component';
 import { ManagerHomeComponent } from './manager-home/manager-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
-import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component';
 import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -69,7 +69,7 @@ import {MatButtonModule} from '@angular/material/button';
     ManagerProjectHomeComponent,
     ManagerHomeComponent,
     ManagerProjectListComponent,
-    CreateUserComponent,
+    CreateFabricUserIdentityComponent,
     FabricUserListComponent,
     UpdateFabricUserComponent,
     ChangePasswordComponent,

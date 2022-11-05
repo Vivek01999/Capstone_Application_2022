@@ -4,7 +4,6 @@
  			Local Admin Application
  		</title>
  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 		<link rel="stylesheet" href="login.component.css">
  	</head>
  	<body>
  		<div class="box">Consortium Application</div>
@@ -12,9 +11,9 @@
  			<div class = "border">
  			<div class="welcome" ><b>Welcome</b></div>
  			<br>
- 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="Username" [(ngModel)]="Username" placeholder="Username">
+ 			<input type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
  			<br>
- 			<input type="password" name="Password" [(ngModel)]="Password" class="form-control" id="exampleFormControlInput1" style="width: 500px;" placeholder="Password">
+ 			<input type="password" name="password" [(ngModel)]="password" class="form-control" id="exampleFormControlInput1" style="width: 500px;" placeholder="password">
  			<br>
  			Select the Organization:
  			<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">

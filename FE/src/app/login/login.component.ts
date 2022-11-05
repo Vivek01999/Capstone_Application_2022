@@ -9,10 +9,10 @@ import { AuthenticationService } from '../services/AuthenticationService.service
 })
 export class LoginComponent implements OnInit {
 
-  Username: string = "";
+  username: string = "";
   selected: string = "NASA";
-  Password: string = "";
-  Role: string = "manager"
+  password: string = "";
+  role: string = "admin"
   user: any
   constructor(private userService: MyTestService, private authenticationService: AuthenticationService, private router: Router) {
 
@@ -25,15 +25,15 @@ export class LoginComponent implements OnInit {
 
 
   onLoginSubmit() {
-    this.userService.setInfo(this.selected, this.Username);
-    this.authenticationService.login(this.Username, this.Password).subscribe(data => {
+    this.userService.setInfo(this.selected, this.username);
+    this.authenticationService.login(this.username, this.password).subscribe(data => {
       this.user = data
       //todo local token
       console.log(this.user)
-      if (this.user.RoleName == "manager" && this.user.isValid) {
-        this.router.navigate(['/ManagerHome'])
+      if (this.user.RoleName == "User" && this.user.isValid) {
+        this.router.navigate(['/home'])
       }
-      else if (this.user.RoleName == "cse" && this.user.isValid) {
+      else if (this.user.RoleName == "Admin" && this.user.isValid) {
         this.router.navigate(['/admindashboard'])
       }
       else if (!this.user.isValid) {

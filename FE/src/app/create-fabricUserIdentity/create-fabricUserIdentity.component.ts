@@ -3,14 +3,13 @@ import { RegisterService } from '../services/register.service';
 import { MyTestService } from '../my-test.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AnimationDurations } from '@angular/material/core';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-create-fabric-user-identity',
+  templateUrl: './create-fabricUserIdentity.component.html',
+  styleUrls: ['./create-fabricUserIdentity.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateFabricUserIdentityComponent implements OnInit {
 
   username: string = '';
   selected: string = "NASA";
