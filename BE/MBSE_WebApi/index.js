@@ -9,7 +9,6 @@ const port = 3000
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 
-const { getUserDetails } = require("./handlers/users");
 const db = require("./util/db");
 const {
   getEmployeeDetails,
@@ -48,14 +47,7 @@ const {
 const {
   registerFabricUser, deleteUser, getUserList, updateFabricUser
 } = require("./handlers/FabricEndPoints");
-
-const {
-  getFabricUser
-} = require("./handlers/getFabricUser");
-
-const {
-  fabUsrChangePassword
-} = require("./handlers/fabUsrChangePassword");
+const { getOrganizationList } = require("./handlers/organizations");
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -99,11 +91,10 @@ app.get("/getFileDetails/:docId", cors(), getFileDetails);
 app.get("/getSingleFileDetails/:fileName", cors(), getSingleFileDetails);
 app.get("/getSingleFileDetails/uploads/:fileName", cors(), getSingleFileDetails);
 app.post("/registerUser", registerFabricUser);
-app.get("/getFabricUser", getFabricUser);
-app.post("/fabUsrChangePassword", fabUsrChangePassword);
 app.post("/getUserList", cors(), getUserList);
 app.post("/updateFabricUser", cors(), updateFabricUser);
 app.post("/deleteUser", cors(), deleteUser);
+app.get("/getOrganizationList", cors(), getOrganizationList);
 
 app.listen(port, () => {
   db.CreateConnection();
