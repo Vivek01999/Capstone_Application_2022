@@ -6,7 +6,7 @@
  	<body>
  		<div class="box1">
  			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome" style=" text-decoration: none;"> {{org}}</a></div>
- 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manager({{username}})</div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Admin({{username}})</div>
  			<div style="position : absolute; left:1260px; top: 25px;">
  				<mat-menu #menu="matMenu">
  					<button mat-menu-item>
@@ -32,7 +32,7 @@
  			
 				<a routerLink="/employeelist" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor" style="position : absolute; left:837px; top: 218px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br>User <br>List</div></a> 
  			
-				<a routerLink="/newemployee" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor" style="position : absolute; left:160px; top: 220px;"><div style="left: 160px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br>New <br>User</div></a>
+				<a routerLink="/createUser" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor" style="position : absolute; left:160px; top: 220px;"><div style="left: 160px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br>New <br>User</div></a>
 			
 				<a routerLink="/userList" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor" style="position : absolute; left:500px; top: 221px;"><div style="left: 200px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br>Fabric<br>User</div></a>
  			

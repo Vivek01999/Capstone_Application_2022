@@ -6,7 +6,7 @@
  	<body>
  		<div class="box1">
  			<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome" style=" text-decoration: none;"> {{org}}</a></div>
- 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Manager({{username}})</div>
+ 			<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Admin({{username}})</div>
  			<div style="position : absolute; left:1260px; top: 25px;">
  				<mat-menu #menu="matMenu">
  					<button mat-menu-item>
@@ -48,14 +48,15 @@
 				<tr *ngFor="let item of EmployeeListData ">
 					<td>{{item.Name}}</td>
 					<td>{{item.Username}}</td>
-					<td>{{item.EmployeeRoleID==1? "CSE": "Manager"}}</td>
-					<td>{{item.created_by}}</td>
-					<td>{{item.created_date}}</td>
+					<td>{{item.EmployeeRoleID==1? "User": "Admin"}}</td> 
+					<!-- Need to fetch from employee role table -->
+					<td>{{item.Created_By}}</td>
+					<td>{{item.Created_Date.split('T')[0]}}</td>
 				</tr>
 			 </tbody>
  			</table>
- 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
- 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div>
+ 			<!-- <div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
+ 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div> -->
  		</div>
  	</body>	
  </html> 

@@ -28,6 +28,7 @@ import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/c
 import { UserlistComponent } from './userlist/userlist.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -54,7 +55,8 @@ const routes: Routes = [
   { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent },
   { path: 'userList', component: UserlistComponent},
   { path: 'updateFabricUser', component: UpdateFabricUserComponent},
-  { path: 'deleteFabricUser', component: DeleteFabricUserComponent}
+  { path: 'deleteFabricUser', component: DeleteFabricUserComponent},
+  { path: 'createUser', component: CreateUserComponent}
 ];
 
 

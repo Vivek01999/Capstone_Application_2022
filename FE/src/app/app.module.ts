@@ -41,7 +41,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { UserlistComponent } from './userlist/userlist.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { CreateUserComponent } from './create-user/create-user.component';
+
 
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
@@ -73,7 +75,8 @@ import {MatButtonModule} from '@angular/material/button';
     UpdateFabricUserComponent,
     ChangePasswordComponent,
     UserlistComponent,
-    DeleteFabricUserComponent
+    DeleteFabricUserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule, 

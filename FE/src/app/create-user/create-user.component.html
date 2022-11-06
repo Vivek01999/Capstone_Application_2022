@@ -1,0 +1,58 @@
+<html>
+ 	<head>	
+ 		<title>
+ 			Local Admin Application
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 	</head>
+ 	<body>
+ 		<form class="formcenter">
+ 			<div class = "border">
+				<br>
+ 			<div class="welcome" ><b>Create an User</b></div>
+			<br>
+			<br>
+ 			<form class="cen">
+                <!-- Need to add validiators -->
+                <label for="name">Name</label><br>
+				<input type="text" id="name" name="name" [(ngModel)]="name" value=""><br>
+				<label for="userIdentity">Username</label><br>
+				<input type="text" id="userIdentity" name="userIdentity" [(ngModel)]="userIdentity" required value=""><br>
+                <label for="password">Password</label><br>
+				<input type="password" id="password" name="password" [(ngModel)]="password" value=""><br>
+                <label for="organization">Organization</label><br>
+				<input type="text" id="organization" name="organization" [(ngModel)]="organization" value=""><br>
+                <label for="employeeRole">EmployeeRole</label><br>
+				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+                    name="employeeRole" [(ngModel)]="employeeRole">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <!-- <label for="createdBy">Created By</label><br>
+                <input type="text" name="createdBy" [(ngModel)]="currentUser" readonly><br>
+                <label for="createdDate">Created Date</label><br>
+                <input type="text" name="createdDate" [(ngModel)]="date1" readonly><br> -->
+			  </form>
+            <br>
+ 			<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
+				<option>--Select a Username--</option>
+				<option *ngFor="let item of EmployeeListData">
+					{{item.Username}}
+				</option>
+ 			</select>
+
+ 			  <br>
+ 			  <-- {{selected}} -->
+ 			  <br>
+               <!-- (click)=""   -->
+ 			<button class="btn btn-primary"type="submit" style="width: 500px;margin-left: 100px">Create an User</button>
+ 			</div>
+			 <p> 
+				<!-- space-->
+				<br>
+				{{response}}
+			</p>
+ 		</form>
+ 	</body>	
+ </html> 
+

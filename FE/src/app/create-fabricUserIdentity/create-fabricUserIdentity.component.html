@@ -21,15 +21,41 @@
 					{{item.Username}}
 				</option>
  				</select> -->
-				 <label for="role">Role</label><br>
-				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
-				 name="role" [(ngModel)]="role">
-				 <option value="peer">peer</option>
-				 <option value="client">client</option>
-			 </select>
-				<!-- <input type="text" id="role" name="role" [(ngModel)]="role"value=""><br> -->
-				<label for="affiliation">Affliation</label><br>
-				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"value=""><br>
+				<!-- <label for="role">Role</label><br>
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+					name="role" [(ngModel)]="role">
+					<option>--Select a Role--</option>
+					<option value="peer">peer</option>
+					<option value="client">client</option>
+				</select> -->
+
+				<label for="role">Role</label><br>
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="role" [(ngModel)]="role" placeholder="role">
+				<option>--Select a Role--</option>
+				<!-- <option value="peer">peer</option>
+				<option value="client">client</option> -->
+				<option *ngFor="let item of EmployeeListData">
+					{{item.OrgId}}
+				</option>
+ 				</select>
+
+				<label for="organization">Organization</label><br>
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="organization" [(ngModel)]="organization" placeholder="organization">
+				<option>--Select a Organization--</option>
+				<option *ngFor="let item of EmployeeListData">
+					{{item.OrgId}}
+				</option>
+ 				</select>
+				
+				 <label for="affiliation">Affiliation</label><br>
+				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="affiliation" [(ngModel)]="affiliation" placeholder="affiliation">
+				 <option>--Select a Affiliation--</option>
+				 <option *ngFor="let item of EmployeeListData">
+					 {{item.OrgId}}
+				 </option>
+				  </select>
+				<!-- <label for="affiliation">Affliation</label><br>
+				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"value=""><br> -->
 			  </form>
             <br>
  			<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">

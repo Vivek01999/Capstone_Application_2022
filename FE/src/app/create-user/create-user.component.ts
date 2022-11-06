@@ -3,36 +3,39 @@ import { RegisterService } from '../services/register.service';
 import { MyTestService } from '../my-test.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
+
 
 @Component({
-  selector: 'app-create-fabric-user-identity',
-  templateUrl: './create-fabricUserIdentity.component.html',
-  styleUrls: ['./create-fabricUserIdentity.component.css']
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.css']
 })
-export class CreateFabricUserIdentityComponent implements OnInit {
-
+export class CreateUserComponent implements OnInit {
   username: string = '';
   selected: string = "NASA";
   response: string = '';
-  role: string = '';
+  employeeRole: string = '';
   affiliation: string = '';
   userIdentity: string = '';
-  organization: string = ';'
+  name: string = '';
+  password: string = '';
+  organization: string = '';
+  currentUser: string = '';
   public EmployeeListData: any[] = [];
-  constructor(private snackBar: MatSnackBar,private registerService: RegisterService, private ts: MyTestService, private router: Router, private getallemployeeservice: GetAllEmployeesservice){
-    this.username = ts.getUser();
+  date: Date = new Date();
+  date1: any = '';
+  constructor(private snackBar: MatSnackBar,private registerService: RegisterService, private ts: MyTestService, private router: Router) { 
+    this.currentUser = ts.getUser();
+    this.date1 = this.date.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
-    this.getEmployeeListData();
   }
-  
   createuser() {
     const payload = {
       "registerUser": {
         "userIdentity":this.userIdentity,
-        "role":this.role,
+        "role":this.employeeRole,
         "affiliation": this.affiliation
       }
     }
@@ -48,17 +51,6 @@ export class CreateFabricUserIdentityComponent implements OnInit {
       this.snackBar.open("Unable to register user " + this.userIdentity, "OK");
       this.router.navigate(['/userList']);
     });
-
   }
 
-  getEmployeeListData() {
-    this.getallemployeeservice.Employees()
-    .subscribe(
-      result => {
-        if (result) {
-          this.EmployeeListData = result;
-          console.log("EmployeeListData", this.EmployeeListData);
-        }
-      });
-  }
 }
