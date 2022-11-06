@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class RegisterService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   registerUser(payload: any) {
     const url = `${environment.API_URL}/registerUser`;

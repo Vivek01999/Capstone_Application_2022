@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyTestService } from '../my-test.service';
 import { AuthenticationService } from '../services/AuthenticationService.service';
+import { OrganizationService } from '../services/organization.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,23 +11,31 @@ import { AuthenticationService } from '../services/AuthenticationService.service
 export class LoginComponent implements OnInit {
 
   username: string = "";
-  selected: string = "NASA";
+  selected: any;
   password: string = "";
   role: string = "admin"
   user: any
-  constructor(private userService: MyTestService, private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private userService: MyTestService, private authenticationService: AuthenticationService,
+    private router: Router, private orgService: OrganizationService) {
 
   }
 
-  orgranization = ["UHCL", "NASA", "Tietronix"]; // need to get organizations from Backend
+  orgranizations = [];
 
   ngOnInit(): void {
+    this.fetchOrganizationList();
   }
 
 
   onLoginSubmit() {
     this.userService.setInfo(this.selected, this.username);
-    this.authenticationService.login(this.username, this.password).subscribe(data => {
+    const selectedOrganization: any = this.orgranizations.find((org: any) => org.OrgName == this.selected)
+    const payload = {
+      Username: this.username,
+      Password: this.password,
+      organizationId: selectedOrganization.OrgId
+    }
+    this.authenticationService.login(payload).subscribe(data => {
       this.user = data
       //todo local token
       console.log(this.user)
@@ -40,5 +49,18 @@ export class LoginComponent implements OnInit {
         alert("invalid username or password")
       }
     })
+  }
+
+  fetchOrganizationList() {
+    this.orgService.getOrganizationList().subscribe(res => {
+      if (res) {
+        this.orgranizations = res;
+        const firstValue:any = this.orgranizations[0];
+        this.selected = firstValue.OrgName;
+        console.log(this.orgranizations)
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 }

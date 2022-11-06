@@ -8,20 +8,20 @@ import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-     user: any
+  user: any
 
 
-    constructor(private http: HttpClient) {
-        
-    }
-    
-    login(username:string,password:string) {
+  constructor(private http: HttpClient) {
 
-        console.log("login called")
-      return  this.http.post<any>(`${environment.API_URL}/login`, { Username : username, Password: password })
-    }
+  }
+
+  login(payload: any) {
+
+    console.log("login called")
+    return this.http.post(`${environment.API_URL}/login`, payload);
+  }
 
 
 
-    
+
 }
