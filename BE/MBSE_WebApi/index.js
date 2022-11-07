@@ -49,6 +49,7 @@ const {
   registerFabricUser, deleteUser, getUserList, updateFabricUser
 } = require("./handlers/FabricEndPoints");
 const { getOrganizationList } = require("./handlers/organizations");
+const { getAffiliations } = require("./handlers/Affiliations");
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -97,6 +98,7 @@ app.post("/getUserList", cors(), getUserList);
 app.post("/updateFabricUser", cors(), updateFabricUser);
 app.post("/deleteUser", cors(), deleteUser);
 app.get("/getOrganizationList", cors(), getOrganizationList);
+app.get("/getAffiliations", cors(), getAffiliations);
 
 app.listen(port, () => {
   db.CreateConnection();

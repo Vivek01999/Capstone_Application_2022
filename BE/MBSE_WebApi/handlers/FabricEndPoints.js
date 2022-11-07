@@ -28,7 +28,7 @@ exports.registerFabricUser = async (req, res) => {
     const dbPayload = {
         "FaricUserIdentity": payload.registerUser.userIdentity,
         "FabricRole": payload.registerUser.role,
-        "Organization": "UHCL",
+        "Organization": getOrgID(payload.registerUser.organization),
         "Affiliation": payload.registerUser.affiliation
     }
     instance.post('/registerUser', registerUserTemplate)
@@ -124,4 +124,14 @@ registerFabricUserToDB = (input) => {
         console.log(err)
         return false;
     }
+}
+
+const getOrgID = (org_name) => {
+  try {
+    return db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
+      .then((data) => data.rows[0])
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
