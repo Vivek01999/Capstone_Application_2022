@@ -52,11 +52,11 @@ const routes: Routes = [
   { path: 'CSEProjectHome', component: ManagerProjectHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'adminHome', component: AdminHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
-  { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent },
-  { path: 'fabricUserIDList', component: FabricUserIdentityListComponent},
-  { path: 'updateFabricUser', component: UpdateFabricUserComponent},
-  { path: 'deleteFabricUser', component: DeleteFabricUserComponent},
-  { path: 'createUser', component: CreateUserComponent}
+  { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent, canActivate: [CanActivateTeam] },
+  { path: 'fabricUserIDList', component: FabricUserIdentityListComponent, canActivate: [CanActivateTeam] },
+  { path: 'updateFabricUser', component: UpdateFabricUserComponent, canActivate: [CanActivateTeam] },
+  { path: 'deleteFabricUser', component: DeleteFabricUserComponent, canActivate: [CanActivateTeam] },
+  { path: 'createUser', component: CreateUserComponent, canActivate: [CanActivateTeam] }
 ];
 
 
