@@ -1,6 +1,8 @@
-
+const { 
+  v4: uuidv4,
+} = require('uuid');
 const config = require("../util/config");
-const { uuid } = require("uuidv4");
+// const { uuid } = require("uuidv4");
 const db = require('../util/db');
 
 const {
@@ -276,7 +278,7 @@ const createOrgRole = (empID, projectID, OrgId) => {
 
 exports.postEmployee = (req, res) => {
   input = req.body
-  createEmployee(input.created_by, input.username, input.RoleName, input.orgname).then(thruthvalue => {
+  const thruthvalue = createEmployee(input)
     if (thruthvalue) {
       res.json({
         "user_created": true
@@ -287,29 +289,19 @@ exports.postEmployee = (req, res) => {
         "user_created": false
       })
     }
-  })
-
 }
 
-const createEmployee = (created_by, username, RoleName, orgname) => {
-  created_date = new Date().toISOString().slice(0, 10)
-  UUID = new uuid()
-  // OrgId
-  Name
-  Org_Id 
-  Password
-  EmployeeRoleID
+const createEmployee = (input) => {
+  const UUID = uuidv4();
       try {
-        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "UUID","Name","Username","Password", "OrgId","EmployeeRoleID","created_by","created_date" ) VALUES( '${UUID}','${Name}','${username}','${Password}',${Org_Id}, ${EmployeeRoleID},'${created_by}','${created_date}')`)
+        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "ID","Name","Username","Password", "OrgId","EmployeeRoleID","Created_By","Created_Date" ) VALUES( '${UUID}','${input.name}','${input.username}','${input.password}',${input.orgId}, ${input.role},'${input.created_by}','${input.date}')`)
         return true
       }
       catch (err) {
         console.log(err)
+        return false;
       }
-   
- 
 
-  // ID
 
 
 }

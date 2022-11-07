@@ -14,7 +14,8 @@ const {
   getEmployeeDetails,
   getAllEmployees,
   login,
-  mapEmployeeRole
+  mapEmployeeRole,
+  postEmployee
 } = require("./handlers/Employee");
 const {
   fileUpload,
@@ -63,6 +64,7 @@ app.get("/getEmployeeDetails", cors(), getEmployeeDetails);
 app.post("/login", cors(), login);
 app.get("/getAllEmployees", cors(), getAllEmployees);
 app.post("/mapEmployeeRole", cors(), mapEmployeeRole);
+app.post("/createUser", cors(), postEmployee);
 // Model endpoints
 app.get("/getAllBaseModelTemplate", cors(), getAllBaseModelTemplate);
 app.get("/getAllVariantModelTemplate", cors(), getAllVariantModelTemplate);
