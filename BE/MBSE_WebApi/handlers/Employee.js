@@ -293,23 +293,21 @@ exports.postEmployee = (req, res) => {
 
 const createEmployee = (created_by, username, RoleName, orgname) => {
   created_date = new Date().toISOString().slice(0, 10)
+  UUID = new uuid()
   // OrgId
-  Org_Id = getOrgID(orgname).then(orgrecord => {
-    console.log(orgrecord.OrgId)
-    Org_Id = orgrecord.OrgId
-    Password = generatePassword()
-    EmployeeRoleID = getRoleID(RoleName).then(rolerecord => {
-      console.log(rolerecord.ID)
-      EmployeeRoleID = rolerecord.ID
+  Name
+  Org_Id 
+  Password
+  EmployeeRoleID
       try {
-        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "Username", "Name", "Password", "OrgId","EmployeeRoleID","created_by","created_date" ) VALUES( '${username}','${username}','${Password}',${Org_Id}, ${EmployeeRoleID},'${created_by}','${created_date}')`)
+        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "UUID","Name","Username","Password", "OrgId","EmployeeRoleID","created_by","created_date" ) VALUES( '${UUID}','${Name}','${username}','${Password}',${Org_Id}, ${EmployeeRoleID},'${created_by}','${created_date}')`)
         return true
       }
       catch (err) {
         console.log(err)
       }
-    })
-  })
+   
+ 
 
   // ID
 
