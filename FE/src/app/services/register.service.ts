@@ -10,7 +10,7 @@ export class RegisterService {
 
   constructor(private readonly http: HttpClient) { }
 
-  registerUser(payload: any) {
+  registerFabUserIdentity(payload: any) {
     const url = `${environment.API_URL}/registerUser`;
     return this.http.post(url, payload)
       .pipe(
@@ -20,7 +20,7 @@ export class RegisterService {
       );
   }
 
-  getUserList(payload: any) {
+  getFabUserIdentityList(payload: any) {
     const url = `${environment.API_URL}/getUserList`;
     return this.http.post(url, payload)
       .pipe(
@@ -30,7 +30,7 @@ export class RegisterService {
       );
   }
 
-  deleteUser(payload: any) {
+  deleteFabUserIdentity(payload: any) {
     const url = `${environment.API_URL}/deleteUser`;
     return this.http.post(url, payload)
       .pipe(
@@ -40,7 +40,7 @@ export class RegisterService {
       );
   }
 
-  updateUser(payload: any) {
+  updateFabUserIdentity(payload: any) {
     const url = `${environment.API_URL}/updateFabricUser`;
     return this.http.post(url, payload)
       .pipe(

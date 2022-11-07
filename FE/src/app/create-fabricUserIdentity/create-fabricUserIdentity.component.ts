@@ -36,7 +36,7 @@ export class CreateFabricUserIdentityComponent implements OnInit {
         "affiliation": this.affiliation
       }
     }
-    this.registerService.registerUser(payload).subscribe(res => {
+    this.registerService.registerFabUserIdentity(payload).subscribe(res => {
       if (res) {
         console.log("Successfully registered");
         this.response = res.status;

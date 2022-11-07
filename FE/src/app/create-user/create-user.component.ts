@@ -13,55 +13,62 @@ import { OrganizationService } from '../services/organization.service';
 })
 export class CreateUserComponent implements OnInit {
   username: string = '';
-  selected: string = "NASA";
+  selected: any;
   response: string = '';
-  employeeRole: string = '';
-  affiliation: string = '';
-  userIdentity: string = '';
+  employeeRole: number = 1;
   name: string = '';
   password: string = '';
-  organization: string = '';
   currentUser: string = '';
-  public EmployeeListData: any[] = [];
-  date: Date = new Date();
-  date1: any = '';
+  orgranizations = [];
+  orgId: number = 0;
   constructor(private snackBar: MatSnackBar, private registerService: RegisterService,
     private ts: MyTestService, private router: Router, private readonly orgService: OrganizationService) {
     this.currentUser = ts.getUser();
-    this.date1 = this.date.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
+    this.fetchOrganizationList();
   }
   createuser() {
     const payload = {
       "registerUser": {
-        "userIdentity": this.userIdentity,
+        "name":this.name,
+        "username": this.username,
+        "password": this.password,
         "role": this.employeeRole,
-        "affiliation": this.affiliation
+        "date": new Date().toISOString(),
+        "created_by": this.currentUser,
+        "orgId": this.orgId
       }
     }
-    this.registerService.registerUser(payload).subscribe(res => {
-      if (res) {
-        console.log("Successfully registered");
-        this.response = res.status;
-        this.snackBar.open("Successfuly registered and enrolled " + this.userIdentity, "OK");
-        this.router.navigate(['/userList']);
-      }
-    }, err => {
-      console.log(err);
-      this.snackBar.open("Unable to register user " + this.userIdentity, "OK");
-    });
+    // this.registerService.registerUser(payload).subscribe(res => {
+    //   if (res) {
+    //     console.log("Successfully registered");
+    //     this.response = res.status;
+    //     this.snackBar.open("Successfuly registered local user" + this.username, "OK");
+    //     this.router.navigate(['/employeelist']);
+    //   }
+    // }, err => {
+    //   console.log(err);
+    //   this.snackBar.open("Unable to register user " + this.username, "OK");
+    // });
 
   }
 
   fetchOrganizationList() {
     this.orgService.getOrganizationList().subscribe(res => {
       if (res) {
+        if (this.ts.user == 'admin') {
+          this.orgranizations = res;
+        } else {
+          this.orgranizations = res.filter((org: any) => org.OrgName == this.ts.info);
+        }
+        const firstValue: any = this.orgranizations[0];
+        this.selected = firstValue.OrgName;
+        this.orgId = firstValue.OrgId;
       }
     }, err => {
       console.log(err);
-      this.snackBar.open("Unable to Fetch Organization List ", "OK");
     });
   }
 }

@@ -43,7 +43,7 @@ export class UpdateFabricUserComponent implements OnInit {
       }
     }
     console.log(payload);
-    this.registerService.updateUser(payload).subscribe(result => {
+    this.registerService.updateFabUserIdentity(payload).subscribe(result => {
       if (result.status == true) {
         //snackbar
         this.snackBar.open("Successfuly updated details of fabric user " + payload.updateUser.id, "OK");

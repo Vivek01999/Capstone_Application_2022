@@ -27,7 +27,7 @@ export class UserlistComponent implements OnInit {
     const payload = {
       "adminIdentity": "admin"
     }
-    this.registerService.getUserList(payload)
+    this.registerService.getFabUserIdentityList(payload)
       .subscribe(
         result => {
           if (result) {
