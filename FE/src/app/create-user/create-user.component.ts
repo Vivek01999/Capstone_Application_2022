@@ -19,7 +19,7 @@ export class CreateUserComponent implements OnInit {
   name: string = '';
   password: string = '';
   currentUser: string = '';
-  orgranizations = [];
+  organizations = [];
   orgId: number = 0;
   constructor(private snackBar: MatSnackBar, private userService: UserService,
     private ts: MyTestService, private router: Router, private readonly orgService: OrganizationService) {
@@ -57,11 +57,11 @@ export class CreateUserComponent implements OnInit {
     this.orgService.getOrganizationList().subscribe(res => {
       if (res) {
         if (this.ts.user == 'admin') {
-          this.orgranizations = res;
+          this.organizations = res;
         } else {
-          this.orgranizations = res.filter((org: any) => org.OrgName == this.ts.info);
+          this.organizations = res.filter((org: any) => org.OrgName == this.ts.info);
         }
-        const firstValue: any = this.orgranizations[0];
+        const firstValue: any = this.organizations[0];
         this.selected = firstValue.OrgName;
         this.orgId = firstValue.OrgId;
       }

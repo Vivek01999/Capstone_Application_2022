@@ -4,6 +4,7 @@ import { MyTestService } from '../my-test.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
+import { OrganizationService } from '../services/organization.service';
 
 @Component({
   selector: 'app-create-fabric-user-identity',
@@ -13,27 +14,32 @@ import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 export class CreateFabricUserIdentityComponent implements OnInit {
 
   username: string = '';
-  selected: string = "NASA";
+  selected: string = "";
   response: string = '';
   role: string = '';
   affiliation: string = '';
+  affiliationList = [];
   userIdentity: string = '';
-  organization: string = ';'
-  public EmployeeListData: any = [];
-  constructor(private snackBar: MatSnackBar,private fabUIDService: FabricUserIdentityService, private ts: MyTestService, private router: Router, private getallemployeeservice: GetAllEmployeesservice){
+  organizations = [];
+  info: string = '';
+  orgId = 0;
+  constructor(private snackBar: MatSnackBar, private fabUIDService: FabricUserIdentityService, private ts: MyTestService,
+    private router: Router, private readonly orgService: OrganizationService) {
     this.username = ts.getUser();
+    this.info = ts.getInfo();
   }
 
   ngOnInit(): void {
-    this.getEmployeeListData();
+    this.fetchOrganizationList();
   }
-  
+
   createuser() {
     const payload = {
       "registerUser": {
-        "userIdentity":this.userIdentity,
-        "role":this.role,
-        "affiliation": this.affiliation
+        "userIdentity": this.userIdentity,
+        "role": this.role,
+        "affiliation": this.affiliation,
+        "organization": this.info
       }
     }
     this.fabUIDService.registerFabUserIdentity(payload).subscribe(res => {
@@ -50,14 +56,36 @@ export class CreateFabricUserIdentityComponent implements OnInit {
 
   }
 
-  getEmployeeListData() {
-    this.getallemployeeservice.Employees()
-    .subscribe(
-      result => {
-        if (result) {
-          this.EmployeeListData = result;
-          console.log("EmployeeListData", this.EmployeeListData);
+  fetchOrganizationList() {
+    this.orgService.getOrganizationList().subscribe(res => {
+      if (res) {
+        if (this.ts.user == 'admin') {
+          this.organizations = res;
+        } else {
+          this.organizations = res.filter((org: any) => org.OrgName == this.ts.info);
         }
-      });
+        const firstValue: any = this.organizations[0];
+        this.selected = firstValue.OrgName;
+        this.orgId = firstValue.OrgId;
+        this.fetchAffiliations(this.selected);
+      }
+    }, err => {
+      console.log(err);
+    });
   }
+
+  fetchAffiliations(event: any) {
+    const payload = {
+      "orgName": event,
+      "orgId": 1
+    }
+    this.orgService.getAffiliations(payload).subscribe(res => {
+      if (res) {
+        this.affiliationList = res.affiliations;
+      }
+    }, err => {
+      console.log(err);
+    });
+  }
+
 }

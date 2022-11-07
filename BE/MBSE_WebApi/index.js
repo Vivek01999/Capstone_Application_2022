@@ -1,7 +1,7 @@
 const app = require("express")();
+const express = require("express");
 const cors = require("cors");
 
-const express = require("express");
 const bodyParser = require('body-parser')
 app.use(cors());
 const port = 3000
@@ -98,7 +98,7 @@ app.post("/getUserList", cors(), getUserList);
 app.post("/updateFabricUser", cors(), updateFabricUser);
 app.post("/deleteUser", cors(), deleteUser);
 app.get("/getOrganizationList", cors(), getOrganizationList);
-app.get("/getAffiliations", cors(), getAffiliations);
+app.post("/getAffiliations", cors(), getAffiliations);
 
 app.listen(port, () => {
   db.CreateConnection();

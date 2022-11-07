@@ -1,76 +1,56 @@
 <html>
- 	<head>	
- 		<title>
- 			Local Admin Application
- 		</title>
- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 	</head>
- 	<body>
- 		<form class="formcenter">
- 			<div class = "border">
-				<br>
- 			<div class="welcome" ><b>Create an Fabric User</b></div>
+
+<head>
+	<title>
+		Local Admin Application
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<form class="formcenter">
+		<div class="border">
+			<br>
+			<div class="welcome"><b>Create an Fabric User</b></div>
 			<br>
 			<br>
- 			<form class="cen">
+			<form class="cen">
 				<label for="UserIdentity">User Identity</label><br>
 				<input type="text" id="UserIdentity" name="UserIdentity" [(ngModel)]="userIdentity" value=""><br>
-				
+
 				<label for="role">Role</label><br>
-				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="role" [(ngModel)]="role" placeholder="role">
-				<option value="peer">peer</option>
-				<option value="client">client</option>
- 				</select>
-
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="role"
+					[(ngModel)]="role" placeholder="role">
+					<option value="peer">peer</option>
+					<option value="client">client</option>
+				</select>
 				<label for="organization">Organization</label><br>
-				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="organization" [(ngModel)]="organization" placeholder="organization">
-				<option>--Select a Organization--</option>
-				<option *ngFor="let item of EmployeeListData">
-					{{item.OrgId}}
-				</option>
- 				</select>
-				
-				 <label for="affiliation">Affiliation</label><br>
-				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="affiliation" [(ngModel)]="affiliation" placeholder="affiliation">
-				 <option>--Select a Affiliation--</option>
-				 <option *ngFor="let item of EmployeeListData">
-					 {{item.OrgId}}
-				 </option>
-				  </select>
-				<!-- <label for="affiliation">Affliation</label><br>
-				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"value=""><br> -->
-			  </form>
-            <br>
- 			<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
-				<option>--Select a Username--</option>
-				<option *ngFor="let item of EmployeeListData">
-					{{item.Username}}
-				</option>
- 			</select>
+				<select class="form-control" name="Organization" [(ngModel)]="selected"
+					(ngModelChange)="fetchAffiliations($event)" style="width: 500px;">
+					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
+				</select><br>
+
+				<label for="affiliation">Affiliation</label><br>
+				<select type="text" class="form-control" id="affiliation" style="width: 500px;" name="affiliation"
+					[(ngModel)]="affiliation" placeholder="affiliation">
+					<option *ngFor="let item of affiliationList">
+						{{item}}
+					</option>
+				</select>
+			</form>
 			<br>
 
+
 			<br>
-            Select the Organization:
-			<p> 
+			<button class="btn btn-primary" (click)="createuser()" type="submit"
+				style="width: 500px;margin-left: 100px">Register & Enroll</button>
+		</div>
+		<p>
+			<!-- space-->
+			<br>
+			{{response}}
+		</p>
+	</form>
+</body>
 
-			</p>
- 			<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
- 				<option value="NASA">NASA</option>
- 				<option value="UHCL">UHCL</option>
- 				<option value="Tietronix">Tetronix</option>
- 			</select> -->
-
- 			  <br>
- 			  <!-- {{selected}} -->
- 			  <br>
- 			<button class="btn btn-primary" (click)="createuser()"  type="submit" style="width: 500px;margin-left: 100px">Register & Enroll</button>
- 			</div>
-			 <p> 
-				<!-- space-->
-				<br>
-				{{response}}
-			</p>
- 		</form>
- 	</body>	
- </html> 
-
+</html>

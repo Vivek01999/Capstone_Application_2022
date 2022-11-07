@@ -18,4 +18,14 @@ export class OrganizationService {
         })
       );
   }
+
+  getAffiliations(payload: any) {
+    const url = `${environment.API_URL}/getAffiliations`;
+    return this.http.post(url, payload)
+      .pipe(
+        tap((result: any) => {
+          return result;
+        })
+      );
+  }
 }

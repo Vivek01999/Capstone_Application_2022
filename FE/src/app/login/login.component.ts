@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  orgranizations = [];
+  organizations = [];
 
   ngOnInit(): void {
     this.fetchOrganizationList();
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     } else {
 
-      selectedOrganization = this.orgranizations.find((org: any) => org.OrgName == this.selected)
+      selectedOrganization = this.organizations.find((org: any) => org.OrgName == this.selected)
     }
     this.userService.setInfo(this.selected, this.username);
     const payload = {
@@ -62,10 +62,10 @@ export class LoginComponent implements OnInit {
   fetchOrganizationList() {
     this.orgService.getOrganizationList().subscribe(res => {
       if (res) {
-        this.orgranizations = res;
-        const firstValue: any = this.orgranizations[0];
+        this.organizations = res;
+        const firstValue: any = this.organizations[0];
         this.selected = firstValue.OrgName;
-        console.log(this.orgranizations)
+        console.log(this.organizations)
       }
     }, err => {
       console.log(err);

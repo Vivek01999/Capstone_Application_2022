@@ -1,60 +1,47 @@
 <html>
- 	<head>	
- 		<title>
- 			Local Admin Application
- 		</title>
- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 	</head>
- 	<body>
- 		<form class="formcenter">
- 			<div class = "border">
-				<br>
- 			<div class="welcome" ><b>Register User</b></div>
+
+<head>
+	<title>
+		Local Admin Application
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<form class="formcenter">
+		<div class="border">
+			<br>
+			<div class="welcome"><b>Register User</b></div>
 			<br>
 			<br>
- 			<form class="cen">
-                <!-- Need to add validiators -->
-                <label for="name">Name</label><br>
+			<form class="cen">
+				<!-- Need to add validiators -->
+				<label for="name">Name</label><br>
 				<input type="text" id="name" name="name" [(ngModel)]="name" value=""><br>
 				<label for="username">Username</label><br>
 				<input type="text" id="username" name="username" [(ngModel)]="username" required value=""><br>
-                <label for="password">Password</label><br>
+				<label for="password">Password</label><br>
 				<input type="password" id="password" name="password" [(ngModel)]="password" value=""><br>
-                <label for="organization">Organization</label><br>
+				<label for="organization">Organization</label><br>
 				<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
-					<option *ngFor="let org of orgranizations">{{org['OrgName']}}</option>
+					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
 				</select><br>
-                <label for="employeeRole">EmployeeRole</label><br>
-				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
-                    name="employeeRole" [(ngModel)]="employeeRole">
-                    <option value=1>User</option>
-                    <option value=2>Admin</option>
-                </select>
-                <!-- <label for="createdBy">Created By</label><br>
-                <input type="text" name="createdBy" [(ngModel)]="currentUser" readonly><br>
-                <label for="createdDate">Created Date</label><br>
-                <input type="text" name="createdDate" [(ngModel)]="date1" readonly><br> -->
-			  </form>
-            <br>
- 			<!-- <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="username" [(ngModel)]="username" placeholder="username">
-				<option>--Select a Username--</option>
-				<option *ngFor="let item of EmployeeListData">
-					{{item.Username}}
-				</option>
- 			</select>
+				<label for="employeeRole">EmployeeRole</label><br>
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+					name="employeeRole" [(ngModel)]="employeeRole">
+					<option value=1>User</option>
+					<option value=2>Admin</option>
+				</select>
+			</form>
+			<br>
+			<br>
+			<button (click)="createUser()" class="btn btn-primary" type="submit"
+				style="width: 500px;margin-left: 100px">Register User</button>
+		</div>
+		<p>
+			<br> {{response}}
+		</p>
+	</form>
+</body>
 
- 			  <br>
- 			  <-- {{selected}} -->
- 			  <br>
-               <!-- (click)=""   -->
- 			<button (click)="createUser()" class="btn btn-primary"type="submit" style="width: 500px;margin-left: 100px">Register User</button>
- 			</div>
-			 <p> 
-				<!-- space-->
-				<br>
-				{{response}}
-			</p>
- 		</form>
- 	</body>	
- </html> 
-
+</html>
