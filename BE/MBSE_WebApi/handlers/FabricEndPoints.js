@@ -9,7 +9,6 @@ const db = require('../util/db');
 exports.registerFabricUser = async (req, res) => {
 
     const payload = req.body;
-    console.log("ssssssssss", payload)
     const registerUserTemplate = {
         "common": {
             "wallet": config.wallet,
@@ -32,10 +31,10 @@ exports.registerFabricUser = async (req, res) => {
         "Organization": "UHCL",
         "Affiliation": payload.registerUser.affiliation
     }
-    registerFabricUserToDB(dbPayload)
     instance.post('/registerUser', registerUserTemplate)
         .then(async function (response) {
             //console.log(response);
+            registerFabricUserToDB(dbPayload)
             res.send(response.data);
 
         })
