@@ -9,25 +9,23 @@ import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 })
 export class EmployeelistComponent implements OnInit {
 
-  org : string = "";
+  org: string = "";
   username: string = "";
-  public EmployeeListData: any[] = [];
-  constructor(private ts : MyTestService, private getallemployeeservice: GetAllEmployeesservice) { 
-    this.org= ts.getInfo();
-    this.username= ts.getUser();
+  public EmployeeListData: any;
+  constructor(private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice) {
+    this.org = ts.getInfo();
+    this.username = ts.getUser();
   }
   ngOnInit(): void {
     this.getEmployeeListData();
   }
   getEmployeeListData() {
-    this.getallemployeeservice.Employees()
-    .subscribe(
-      result => {
-        if (result) {
-          this.EmployeeListData = result;
-          console.log("EmployeeListData", this.EmployeeListData);
-        }
-      });
+    this.getallemployeeservice.Employees().subscribe((result: any) => {
+      if (result) {
+        this.EmployeeListData = result;
+        console.log("EmployeeListData", this.EmployeeListData);
+      }
+    });
   }
 
 }
