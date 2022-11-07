@@ -65,7 +65,7 @@ function parseArgs(argv, useConfig) {
 						if (argv.length > i) {
 							affiliation = argv[i + 1];
 						}
-					}else if (argv[i] == '--reason') {
+					} else if (argv[i] == '--reason') {
 						if (argv.length > i) {
 							reason = argv[i + 1];
 						}
@@ -109,7 +109,6 @@ function parseArgs(argv, useConfig) {
 	if (reason == null && (useConfig == true || useConfig == 'true')) {
 		reason = config.deleteUser.reason;
 	}
-	// console.log(organisationMSP)
 	return {
 		"userIdentity": userIdentity,
 		"networkChannel": networkChannel,
