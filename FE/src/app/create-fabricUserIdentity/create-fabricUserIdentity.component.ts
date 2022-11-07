@@ -19,7 +19,7 @@ export class CreateFabricUserIdentityComponent implements OnInit {
   affiliation: string = '';
   userIdentity: string = '';
   organization: string = ';'
-  public EmployeeListData: any[] = [];
+  public EmployeeListData: any = [];
   constructor(private snackBar: MatSnackBar,private fabUIDService: FabricUserIdentityService, private ts: MyTestService, private router: Router, private getallemployeeservice: GetAllEmployeesservice){
     this.username = ts.getUser();
   }

@@ -35,7 +35,7 @@ export class CreateUserComponent implements OnInit {
       "username": this.username,
       "password": this.password,
       "role": this.employeeRole,
-      "date": new Date().toISOString(),
+      "date": new Date().toUTCString(),
       "created_by": this.currentUser,
       "orgId": this.orgId
     }
