@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyTestService } from '../my-test.service';
-import { RegisterService } from '../services/register.service';
+import { FabricUserIdentityService } from '../services/fabric-userIdentity.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -16,14 +16,14 @@ export class DeleteFabricUserComponent implements OnInit {
   username: string = ""
   userInfo: any;
 
-  constructor(private snackBar: MatSnackBar,private route: ActivatedRoute,private registerService: RegisterService, private ts: MyTestService, private router: Router) {
+  constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private fabUIDService: FabricUserIdentityService, private ts: MyTestService, private router: Router) {
     this.username = ts.getUser();
   }
 
   ngOnInit(): void {
     this.userInfo = this.route.snapshot.paramMap.get("userInfo");
     if (!this.userInfo) {
-      this.router.navigate(['/userList']);
+      this.router.navigate(['/fabricUserIDList']);
     }
     this.userInfo = JSON.parse(this.userInfo);
     this.userIdentity = this.userInfo.id;
@@ -36,15 +36,15 @@ export class DeleteFabricUserComponent implements OnInit {
         "reason": this.reason
       }
     }
-    this.registerService.deleteFabUserIdentity(payload).subscribe(
+    this.fabUIDService.deleteFabUserIdentity(payload).subscribe(
       result => {
         if (result.status == true) {
           //snackbar
           this.snackBar.open("Successfuly deleted " + this.userIdentity, "OK");
-          this.router.navigate(['/userList']);
-        }else{
+          this.router.navigate(['/fabricUserIDList']);
+        } else {
           this.snackBar.open("Failed to delete user " + this.userIdentity, "OK");
-          this.router.navigate(['/userList']);
+          this.router.navigate(['/fabricUserIDList']);
         }
       })
   }

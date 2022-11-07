@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class FabricUserIdentityService {
 
   constructor(private readonly http: HttpClient) { }
 

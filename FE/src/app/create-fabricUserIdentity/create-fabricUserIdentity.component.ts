@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterService } from '../services/register.service';
+import { FabricUserIdentityService } from '../services/fabric-userIdentity.service';
 import { MyTestService } from '../my-test.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +20,7 @@ export class CreateFabricUserIdentityComponent implements OnInit {
   userIdentity: string = '';
   organization: string = ';'
   public EmployeeListData: any[] = [];
-  constructor(private snackBar: MatSnackBar,private registerService: RegisterService, private ts: MyTestService, private router: Router, private getallemployeeservice: GetAllEmployeesservice){
+  constructor(private snackBar: MatSnackBar,private fabUIDService: FabricUserIdentityService, private ts: MyTestService, private router: Router, private getallemployeeservice: GetAllEmployeesservice){
     this.username = ts.getUser();
   }
 
@@ -36,17 +36,16 @@ export class CreateFabricUserIdentityComponent implements OnInit {
         "affiliation": this.affiliation
       }
     }
-    this.registerService.registerFabUserIdentity(payload).subscribe(res => {
+    this.fabUIDService.registerFabUserIdentity(payload).subscribe(res => {
       if (res) {
         console.log("Successfully registered");
         this.response = res.status;
         this.snackBar.open("Successfuly registered and enrolled " + this.userIdentity, "OK");
-        this.router.navigate(['/userList']);
+        this.router.navigate(['/fabricUserIDList']);
       }
     }, err => {
       console.log(err);
       this.snackBar.open("Unable to register user " + this.userIdentity, "OK");
-      this.router.navigate(['/userList']);
     });
 
   }

@@ -2,21 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyTestService } from '../my-test.service';
 import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
-import { RegisterService } from '../services/register.service';
+import { FabricUserIdentityService } from '../services/fabric-userIdentity.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employeelist',
-  templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.css']
+  templateUrl: './fabric-useridentity-list.component.html',
+  styleUrls: ['./fabric-useridentity-list.component.css']
 })
-export class UserlistComponent implements OnInit {
+export class FabricUserIdentityListComponent implements OnInit {
 
   org: string = "";
   username: string = "";
   public userListData: any;
   public EmployeeListData: any[] = [];
-  constructor(private snackBar: MatSnackBar, private router: Router, private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice, private registerService: RegisterService) {
+  constructor(private snackBar: MatSnackBar, private router: Router, private ts: MyTestService, 
+    private getallemployeeservice: GetAllEmployeesservice, private fabUIDService: FabricUserIdentityService) {
     this.org = ts.getInfo();
     this.username = ts.getUser();
   }
@@ -27,7 +28,7 @@ export class UserlistComponent implements OnInit {
     const payload = {
       "adminIdentity": "admin"
     }
-    this.registerService.getFabUserIdentityList(payload)
+    this.fabUIDService.getFabUserIdentityList(payload)
       .subscribe(
         result => {
           if (result) {

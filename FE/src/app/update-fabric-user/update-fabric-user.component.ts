@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyTestService } from '../my-test.service';
 import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
-import { RegisterService } from '../services/register.service';
+import { FabricUserIdentityService } from '../services/fabric-userIdentity.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -19,14 +19,15 @@ export class UpdateFabricUserComponent implements OnInit {
   type: any = "";
   affiliation: any = "";
   public EmployeeListData: any[] = [];
-  constructor(private snackBar: MatSnackBar,private route: ActivatedRoute, private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice, private router: Router, private registerService: RegisterService) {
+  constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice,
+    private router: Router, private fabUIDService: FabricUserIdentityService) {
     this.org = ts.getInfo();
     this.username = ts.getUser();
   }
   ngOnInit(): void {
     this.userInfo = this.route.snapshot.paramMap.get("userInfo");
     if (!this.userInfo) {
-      this.router.navigate(['/userList']);
+      this.router.navigate(['/fabricUserIDList']);
     }
     this.userInfo = JSON.parse(this.userInfo);
     this.id = this.userInfo.id;
@@ -43,14 +44,14 @@ export class UpdateFabricUserComponent implements OnInit {
       }
     }
     console.log(payload);
-    this.registerService.updateFabUserIdentity(payload).subscribe(result => {
+    this.fabUIDService.updateFabUserIdentity(payload).subscribe(result => {
       if (result.status == true) {
         //snackbar
         this.snackBar.open("Successfuly updated details of fabric user " + payload.updateUser.id, "OK");
-        this.router.navigate(['/userList']);
-      }else{
+        this.router.navigate(['/fabricUserIDList']);
+      } else {
         this.snackBar.open("Failed to update details of fabric user " + payload.updateUser.id, "OK");
-        this.router.navigate(['/userList']);
+        this.router.navigate(['/fabricUserIDList']);
       }
     })
   }

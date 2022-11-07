@@ -38,7 +38,7 @@ import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/c
 import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { UserlistComponent } from './userlist/userlist.component';
+import { FabricUserIdentityListComponent } from './fabric-useridentity-list/fabric-useridentity-list.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -74,7 +74,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
     FabricUserListComponent,
     UpdateFabricUserComponent,
     ChangePasswordComponent,
-    UserlistComponent,
+    FabricUserIdentityListComponent,
     DeleteFabricUserComponent,
     CreateUserComponent
   ],

@@ -25,7 +25,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CanActivateTeam } from './canactivate';
 import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component'
-import { UserlistComponent } from './userlist/userlist.component';
+import { FabricUserIdentityListComponent } from './fabric-useridentity-list/fabric-useridentity-list.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
   { path: 'adminHome', component: AdminHomeComponent, canActivate: [CanActivateTeam] },
   { path: 'ManagerProjectList', component: ManagerProjectListComponent, canActivate: [CanActivateTeam] },
   { path: 'createFabricUserIdentity', component: CreateFabricUserIdentityComponent },
-  { path: 'userList', component: UserlistComponent},
+  { path: 'fabricUserIDList', component: FabricUserIdentityListComponent},
   { path: 'updateFabricUser', component: UpdateFabricUserComponent},
   { path: 'deleteFabricUser', component: DeleteFabricUserComponent},
   { path: 'createUser', component: CreateUserComponent}

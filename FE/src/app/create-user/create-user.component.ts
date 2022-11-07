@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterService } from '../services/register.service';
 import { MyTestService } from '../my-test.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationService } from '../services/organization.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class CreateUserComponent implements OnInit {
   currentUser: string = '';
   orgranizations = [];
   orgId: number = 0;
-  constructor(private snackBar: MatSnackBar, private registerService: RegisterService,
+  constructor(private snackBar: MatSnackBar, private userService: UserService,
     private ts: MyTestService, private router: Router, private readonly orgService: OrganizationService) {
     this.currentUser = ts.getUser();
   }
@@ -31,27 +31,25 @@ export class CreateUserComponent implements OnInit {
   }
   createuser() {
     const payload = {
-      "registerUser": {
-        "name":this.name,
-        "username": this.username,
-        "password": this.password,
-        "role": this.employeeRole,
-        "date": new Date().toISOString(),
-        "created_by": this.currentUser,
-        "orgId": this.orgId
-      }
+      "name": this.name,
+      "username": this.username,
+      "password": this.password,
+      "role": this.employeeRole,
+      "date": new Date().toISOString(),
+      "created_by": this.currentUser,
+      "orgId": this.orgId
     }
-    // this.registerService.registerUser(payload).subscribe(res => {
-    //   if (res) {
-    //     console.log("Successfully registered");
-    //     this.response = res.status;
-    //     this.snackBar.open("Successfuly registered local user" + this.username, "OK");
-    //     this.router.navigate(['/employeelist']);
-    //   }
-    // }, err => {
-    //   console.log(err);
-    //   this.snackBar.open("Unable to register user " + this.username, "OK");
-    // });
+    this.userService.registerUser(payload).subscribe((res: any) => {
+      if (res) {
+        console.log("Successfully registered");
+        this.response = res.status;
+        this.snackBar.open("Successfuly registered local user" + this.username, "OK");
+        this.router.navigate(['/employeelist']);
+      }
+    }, (err: any) => {
+      console.log(err);
+      this.snackBar.open("Unable to register user " + this.username, "OK");
+    });
 
   }
 
