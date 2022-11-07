@@ -10,16 +10,16 @@ exports.registerFabricUser = async (req, res) => {
   //const payload = req.body;
   const registerUserTemplate = {
     "common":{
-      "wallet": "wallet",
-      "organisationMSP": "Org1MSP",
-      "networkChannel":"mychannel",
-      "smartContract":"fabcar"
+      "wallet": config.wallet,
+      "organisationMSP": config.organisationMSP,
+      "networkChannel":config.networkChannel,
+      "smartContract":config.smartContract
     },
     "adminDetails": {
-      "caAuth": "ca.org1.example.com",
-      "wallet": "wallet",
-      "adminIdentity": "admin",
-      "adminSecret": "adminpw"
+      "caAuth": config.caAuth,
+      "wallet": config.wallet,
+      "adminIdentity": config.adminIdentity,
+      "adminSecret": config.adminSecret
     },
     "registerUser": req.body.registerUser
   };
@@ -38,8 +38,8 @@ exports.getUserList = async (req, res) => {
   //const payload = req.body;
   const userListTemplate = {
     "adminDetails": {
-      "caAuth": "ca.org1.example.com",
-      "wallet": "wallet",
+      "caAuth": config.caAuth,
+      "wallet": config.wallet,
       "adminIdentity": req.body.adminIdentity
     }
   }
@@ -57,10 +57,10 @@ exports.deleteUser = async (req, res) => {
   console.log('request', req.body);
   const deleteUserTemplate = {
     "adminDetails": {
-      "caAuth": "ca.org1.example.com",
-      "wallet": "wallet",
-      "adminIdentity": "admin",
-      "adminSecret": "adminpw"
+      "caAuth": config.caAuth,
+      "wallet": config.wallet,
+      "adminIdentity": config.adminIdentity,
+      "adminSecret": config.adminSecret
     },
     "deleteUser": req.body.deleteUser
   };
@@ -79,16 +79,16 @@ exports.updateFabricUser = async (req, res) => {
   const updateUser = req.body.updateUser;
   const updateUserTemplate = {
     "common": {
-      "wallet": "wallet",
-      "organisationMSP": "Org1MSP",
-      "networkChannel": "mychannel",
-      "smartContract": "fabcar"
+      "wallet": config.wallet,
+      "organisationMSP": config.organisationMSP,
+      "networkChannel": config.networkChannel,
+      "smartContract": config.smartContract
     },
     "adminDetails": {
-      "caAuth": "ca.org1.example.com",
-      "wallet": "wallet",
-      "adminIdentity": "admin",
-      "adminSecret": "adminpw"
+      "caAuth": config.caAuth,
+      "wallet": config.adminIdentity,
+      "adminIdentity": config.adminIdentity,
+      "adminSecret": config.adminSecret
     },
     "updateUser": {
       "userIdentity": updateUser.id,

@@ -1,0 +1,12 @@
+{
+    "wallet": "wallet",
+    "organisationMSP": "Org1MSP",
+    "networkChannel":"mychannel",
+    "smartContract":"fabcar",
+    "caAuth": "ca.org1.example.com",
+    "wallet": "wallet",
+    "adminIdentity": "admin",
+    "adminSecret": "adminpw",
+    "adminIdentity": "admin",
+    "adminSecret": "adminpw"
+}
