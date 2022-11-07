@@ -40,9 +40,9 @@ pushd ../test-network
 ./network.sh deployCC -ccn fabcar -ccv 1 -cci initLedger -ccl ${CC_SRC_LANGUAGE} -ccp ${CC_SRC_PATH}
 popd
 
-# pushd ./javascript
-# node enrollAdmin.js ca.org1.example.com admin
-# popd
+pushd ./javascript
+node enrollAdmin.js ca.org1.example.com admin
+popd
 
 cat <<EOF
 

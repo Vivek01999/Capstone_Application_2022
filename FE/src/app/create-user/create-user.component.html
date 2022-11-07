@@ -9,24 +9,26 @@
  		<form class="formcenter">
  			<div class = "border">
 				<br>
- 			<div class="welcome" ><b>Create an User</b></div>
+ 			<div class="welcome" ><b>Register User</b></div>
 			<br>
 			<br>
  			<form class="cen">
                 <!-- Need to add validiators -->
                 <label for="name">Name</label><br>
 				<input type="text" id="name" name="name" [(ngModel)]="name" value=""><br>
-				<label for="userIdentity">Username</label><br>
-				<input type="text" id="userIdentity" name="userIdentity" [(ngModel)]="userIdentity" required value=""><br>
+				<label for="username">Username</label><br>
+				<input type="text" id="username" name="username" [(ngModel)]="username" required value=""><br>
                 <label for="password">Password</label><br>
 				<input type="password" id="password" name="password" [(ngModel)]="password" value=""><br>
                 <label for="organization">Organization</label><br>
-				<input type="text" id="organization" name="organization" [(ngModel)]="organization" value=""><br>
+				<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 500px;">
+					<option *ngFor="let org of orgranizations">{{org['OrgName']}}</option>
+				</select><br>
                 <label for="employeeRole">EmployeeRole</label><br>
 				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
                     name="employeeRole" [(ngModel)]="employeeRole">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
+                    <option value=1>User</option>
+                    <option value=2>Admin</option>
                 </select>
                 <!-- <label for="createdBy">Created By</label><br>
                 <input type="text" name="createdBy" [(ngModel)]="currentUser" readonly><br>
@@ -45,7 +47,7 @@
  			  <-- {{selected}} -->
  			  <br>
                <!-- (click)=""   -->
- 			<button class="btn btn-primary"type="submit" style="width: 500px;margin-left: 100px">Create an User</button>
+ 			<button class="btn btn-primary"type="submit" style="width: 500px;margin-left: 100px">Register User</button>
  			</div>
 			 <p> 
 				<!-- space-->

@@ -36,7 +36,7 @@ export class DeleteFabricUserComponent implements OnInit {
         "reason": this.reason
       }
     }
-    this.registerService.deleteUser(payload).subscribe(
+    this.registerService.deleteFabUserIdentity(payload).subscribe(
       result => {
         if (result.status == true) {
           //snackbar

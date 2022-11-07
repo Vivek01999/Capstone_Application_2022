@@ -28,8 +28,16 @@ export class LoginComponent implements OnInit {
 
 
   onLoginSubmit() {
+    let selectedOrganization: any;
+    if (this.username == "admin") {
+      this.selected = "DEFAULT"
+      selectedOrganization = { OrgId: 0 }
+
+    } else {
+
+      selectedOrganization = this.orgranizations.find((org: any) => org.OrgName == this.selected)
+    }
     this.userService.setInfo(this.selected, this.username);
-    const selectedOrganization: any = this.orgranizations.find((org: any) => org.OrgName == this.selected)
     const payload = {
       Username: this.username,
       Password: this.password,
@@ -55,7 +63,7 @@ export class LoginComponent implements OnInit {
     this.orgService.getOrganizationList().subscribe(res => {
       if (res) {
         this.orgranizations = res;
-        const firstValue:any = this.orgranizations[0];
+        const firstValue: any = this.orgranizations[0];
         this.selected = firstValue.OrgName;
         console.log(this.orgranizations)
       }
