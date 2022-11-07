@@ -1,122 +1,128 @@
 const axios = require('axios');
 const instance = axios.create({
-  baseURL: 'http://localhost:3002'
+    baseURL: 'http://localhost:3002'
 });
+const config = require('./config.json')
+const db = require('../util/db');
 
 
 exports.registerFabricUser = async (req, res) => {
-  
-  console.log('request', req.body);
-  //const payload = req.body;
-  const registerUserTemplate = {
-    "common":{
-      "wallet": config.wallet,
-      "organisationMSP": config.organisationMSP,
-      "networkChannel":config.networkChannel,
-      "smartContract":config.smartContract
-    },
-    "adminDetails": {
-      "caAuth": config.caAuth,
-      "wallet": config.wallet,
-      "adminIdentity": config.adminIdentity,
-      "adminSecret": config.adminSecret
-    },
-    "registerUser": req.body.registerUser
-  };
-  instance.post('/registerUser', registerUserTemplate)
-    .then(async function (response) {
-      //console.log(response);
-      this.registerFabricUser(req.body)
-      res.send(response.data);
-      
-    })
-    .catch(function (error) {
-      // console.log(error);
-    });
+
+    const payload = req.body;
+    console.log("ssssssssss", payload)
+    const registerUserTemplate = {
+        "common": {
+            "wallet": config.wallet,
+            "organisationMSP": config.organisationMSP,
+            "networkChannel": config.networkChannel,
+            "smartContract": config.smartContract
+        },
+        "adminDetails": {
+            "caAuth": config.caAuth,
+            "wallet": config.wallet,
+            "adminIdentity": config.adminIdentity,
+            "adminSecret": config.adminSecret
+        },
+        "registerUser": payload.registerUser
+    };
+
+    const dbPayload = {
+        "FaricUserIdentity": payload.registerUser.userIdentity,
+        "FabricRole": payload.registerUser.role,
+        "Organization": "UHCL",
+        "Affiliation": payload.registerUser.affiliation
+    }
+    registerFabricUserToDB(dbPayload)
+    instance.post('/registerUser', registerUserTemplate)
+        .then(async function (response) {
+            //console.log(response);
+            res.send(response.data);
+
+        })
+        .catch(function (error) {
+            // console.log(error);
+        });
 }
 
 exports.getUserList = async (req, res) => {
-  console.log('request', req.body);
-  //const payload = req.body;
-  const userListTemplate = {
-    "adminDetails": {
-      "caAuth": config.caAuth,
-      "wallet": config.wallet,
-      "adminIdentity": req.body.adminIdentity
+    console.log('request', req.body);
+    //const payload = req.body;
+    const userListTemplate = {
+        "adminDetails": {
+            "caAuth": config.caAuth,
+            "wallet": config.wallet,
+            "adminIdentity": req.body.adminIdentity
+        }
     }
-  }
-  instance.post('/getUserList', userListTemplate)
-    .then(async function (response) {
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    instance.post('/getUserList', userListTemplate)
+        .then(async function (response) {
+            res.send(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 }
 
 exports.deleteUser = async (req, res) => {
-  console.log('request', req.body);
-  const deleteUserTemplate = {
-    "adminDetails": {
-      "caAuth": config.caAuth,
-      "wallet": config.wallet,
-      "adminIdentity": config.adminIdentity,
-      "adminSecret": config.adminSecret
-    },
-    "deleteUser": req.body.deleteUser
-  };
-  instance.post('/deleteUser', deleteUserTemplate)
-    .then(async function (response) {
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    console.log('request', req.body);
+    const deleteUserTemplate = {
+        "adminDetails": {
+            "caAuth": config.caAuth,
+            "wallet": config.wallet,
+            "adminIdentity": config.adminIdentity,
+            "adminSecret": config.adminSecret
+        },
+        "deleteUser": req.body.deleteUser
+    };
+    instance.post('/deleteUser', deleteUserTemplate)
+        .then(async function (response) {
+            res.send(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 }
 
 
 exports.updateFabricUser = async (req, res) => {
-  const updateUser = req.body.updateUser;
-  const updateUserTemplate = {
-    "common": {
-      "wallet": config.wallet,
-      "organisationMSP": config.organisationMSP,
-      "networkChannel": config.networkChannel,
-      "smartContract": config.smartContract
-    },
-    "adminDetails": {
-      "caAuth": config.caAuth,
-      "wallet": config.adminIdentity,
-      "adminIdentity": config.adminIdentity,
-      "adminSecret": config.adminSecret
-    },
-    "updateUser": {
-      "userIdentity": updateUser.id,
-      "role": updateUser.type,
-      "affiliation": updateUser.affiliation
-    }
-  };
-  instance.post('/updateFabricUser', updateUserTemplate)
-    .then(async function (response) {
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    const updateUser = req.body.updateUser;
+    const updateUserTemplate = {
+        "common": {
+            "wallet": config.wallet,
+            "organisationMSP": config.organisationMSP,
+            "networkChannel": config.networkChannel,
+            "smartContract": config.smartContract
+        },
+        "adminDetails": {
+            "caAuth": config.caAuth,
+            "wallet": config.adminIdentity,
+            "adminIdentity": config.adminIdentity,
+            "adminSecret": config.adminSecret
+        },
+        "updateUser": {
+            "userIdentity": updateUser.id,
+            "role": updateUser.type,
+            "affiliation": updateUser.affiliation
+        }
+    };
+    instance.post('/updateFabricUser', updateUserTemplate)
+        .then(async function (response) {
+            res.send(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
- registerFabricUser = (input) => {
-      try {
-         db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"( "FabricUserIdentity","FabricRole","Organization","Affiliation") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}',${input.Affiliation}')`)
+registerFabricUserToDB = (input) => {
+    try {
+        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"( "FabricUserIdentity","FabricRole","Organization","Affiliation") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}')`)
         return true
-      }
-      catch (err) {
+    }
+    catch (err) {
         console.log(err)
         return false;
-      }
-
-
-
+    }
 }
