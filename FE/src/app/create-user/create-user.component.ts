@@ -29,7 +29,7 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(): void {
     this.fetchOrganizationList();
   }
-  createuser() {
+  createUser() {
     const payload = {
       "name": this.name,
       "username": this.username,

@@ -10,7 +10,7 @@ export class UserService {
   constructor(private readonly http: HttpClient) { }
 
   registerUser(payload: any) {
-    const url = `${environment.API_URL}/registerUser`;
+    const url = `${environment.API_URL}/createUser`;
     return this.http.post(url, payload)
       .pipe(
         tap((result: any) => {
