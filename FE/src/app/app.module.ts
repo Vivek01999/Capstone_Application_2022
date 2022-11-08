@@ -43,6 +43,7 @@ import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-us
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { FabricUserIdentityMappingComponent } from './fabric-user-identity-mapping/fabric-user-identity-mapping.component';
 
 
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -76,7 +77,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     ChangePasswordComponent,
     FabricUserIdentityListComponent,
     DeleteFabricUserComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    FabricUserIdentityMappingComponent
   ],
   imports: [
     BrowserModule, 

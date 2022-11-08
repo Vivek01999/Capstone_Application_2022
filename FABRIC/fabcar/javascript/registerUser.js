@@ -11,11 +11,14 @@ const FabricCAServices = require('fabric-ca-client');
 const fs = require('fs');
 const path = require('path');
 const parseArgs = require('./parseArgs');
+const { ALL } = require('dns');
 
 
 
 async function main() {
+    // console.log("I'm here!!!!!");
     var resPayload = parseArgs.parseArgs(process.argv, false);
+    // console.log(resPayload);
     try {
         // load the network configuration
         
@@ -32,6 +35,11 @@ async function main() {
         //console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
+        
+        // await wallet.remove('vivek'); //Deleting Fab User
+        // const tres = await wallet.list() //List of fab users
+        // console.log(tres);
+
         const userIdentity = await wallet.get(resPayload.userIdentity);
         if (userIdentity) {
             console.log(`An identity for the user ${resPayload.userIdentity} already exists in the wallet`);

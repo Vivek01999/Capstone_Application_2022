@@ -29,6 +29,7 @@ import { FabricUserIdentityListComponent } from './fabric-useridentity-list/fabr
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { FabricUserIdentityMappingComponent } from './fabric-user-identity-mapping/fabric-user-identity-mapping.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -56,7 +57,8 @@ const routes: Routes = [
   { path: 'fabricUserIDList', component: FabricUserIdentityListComponent, canActivate: [CanActivateTeam] },
   { path: 'updateFabricUser', component: UpdateFabricUserComponent, canActivate: [CanActivateTeam] },
   { path: 'deleteFabricUser', component: DeleteFabricUserComponent, canActivate: [CanActivateTeam] },
-  { path: 'createUser', component: CreateUserComponent, canActivate: [CanActivateTeam] }
+  { path: 'createUser', component: CreateUserComponent, canActivate: [CanActivateTeam] },
+  { path: 'fabricUserMapping', component: FabricUserIdentityMappingComponent,  canActivate: [CanActivateTeam] }
 ];
 
 
