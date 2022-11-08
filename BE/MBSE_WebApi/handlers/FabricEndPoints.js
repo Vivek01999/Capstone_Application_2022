@@ -152,7 +152,7 @@ exports.getFabricUserListFromDB = async (req, res) => {
 exports.mapUserToFabricID = async (req, res) => {
     const payload = req.body;
     try {
-        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."UserFabUIDMapping"("UserId", "FabricUserIdentity") VALUES('${payload.UserId}', '${payload.FaricUserIdentity}')`)
+        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."UserFabUIDMapping"("UserId", "FabricId") VALUES('${payload.UserId}', '${payload.FabricId}')`)
         res.send({ status: 'success' })
     }
     catch (err) {
