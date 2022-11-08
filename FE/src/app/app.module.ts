@@ -36,7 +36,6 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 import { FabricUserIdentityListComponent } from './fabric-useridentity-list/fabric-useridentity-list.component';
 import { DeleteFabricUserComponent } from './delete-fabric-user/delete-fabric-user.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -72,7 +71,6 @@ import { FabricUserIdentityMappingComponent } from './fabric-user-identity-mappi
     ManagerProjectListComponent,
     CreateFabricUserIdentityComponent,
     UpdateFabricUserComponent,
-    ChangePasswordComponent,
     FabricUserIdentityListComponent,
     DeleteFabricUserComponent,
     CreateUserComponent,
