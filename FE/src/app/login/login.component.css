@@ -19,3 +19,23 @@
   margin-right: auto;
   margin-left : auto;
 }
+.jumbotron{
+  background: linear-gradient(-45deg, #f07b58 , #f13f83 , #25aee0, #21dbb0 );
+animation: gradient 20s ease infinite;
+background-size: 400% 400%;
+margin:0px;
+  padding:0px;
+  border-radius:0px;
+}
+
+@keyframes gradient {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}

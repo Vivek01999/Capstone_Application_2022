@@ -6,8 +6,8 @@
  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	</head>
  	<body>
- 	<div class="box1">
- 		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome" style=" text-decoration: none;"> {{org}}</a></div>
+ 	<div class="">
+ 		
  		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Admin({{username}})</div>
  		<div style="position : absolute; left:1260px; top: 25px;">
  			<mat-menu #menu="matMenu">
@@ -30,13 +30,32 @@
  				</mat-menu>		  
  			</div>
  	</div>
- 		<div class="box2">
- 			<!-- <a routerLink="/modeldashboard" style=" text-decoration: none;"><div class="rectangleGreenBox" style="position : absolute; left:750px; top:300px;"><div style="left: 190px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div><br><mat-icon class="icon-display"> local_hospital</mat-icon> <br><br><div class="greencolor">Model</div></div></a>  -->
-             <a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:300px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">sor_account</mat-icon><br><br><div class="bluecolor">User</div></div></a>
-			 <a routerLink="/projectdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:750px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">assignment</mat-icon><br><br><div class="bluecolor">Project</div></div> </a>
+	<div class="container">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="margin: 20px;">
+					<div class="card-body" style="text-align: -webkit-center;">
+							<div ><a routerLink="/adminHome" style="text-align: left;"> {{org}}</a><br>
+							<br><br>
+								<a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">sor_account</mat-icon><br><br><div class="bluecolor">User</div></div></a>
+								
+								<a routerLink="/fabricUserIDList" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br>Fabric<br>User</div></a>
+							</div>
+							<!-- <a routerLink="/modeldashboard" style=" text-decoration: none;"><div class="rectangleGreenBox" style="position : absolute; left:750px; top:300px;"><div style="left: 190px; position: absolute;"><img src="assets/img/blockchain.png" width="30" height="30" alt="blockchain"></div><br><mat-icon class="icon-display"> local_hospital</mat-icon> <br><br><div class="greencolor">Model</div></div></a>  -->
+						<!--	<a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:300px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">sor_account</mat-icon><br><br><div class="bluecolor">User</div></div></a>-->
+							<!-- <a routerLink="/projectdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox" style="position : absolute; left:750px; top: 250px;"><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">assignment</mat-icon><br><br><div class="bluecolor">Project</div></div> </a>-->
+			
+							
+						</div>
+				</div>	
 
- 			<div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in blockchain</div></div>
- 			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div>
- 		</div>		
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+	
+	
+		
  	</body>	
  </html>
