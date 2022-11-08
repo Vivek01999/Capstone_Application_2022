@@ -29,7 +29,7 @@ exports.registerFabricUser = async (req, res) => {
     const dbPayload = {
         "FaricUserIdentity": payload.registerUser.userIdentity,
         "FabricRole": payload.registerUser.role,
-        "Organization": getOrgID(payload.registerUser.organization),
+        "Organization": await getOrgID(payload.registerUser.organization),
         "Affiliation": payload.registerUser.affiliation
     }
     instance.post('/registerUser', registerUserTemplate)
@@ -127,21 +127,33 @@ registerFabricUserToDB = async (input) => {
     }
 }
 
-const getOrgID = (org_name) => {
+const getOrgID = async (org_name) => {
     try {
-        return db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
-            .then((data) => data.rows[0])
+        const resp = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
+        console.log(resp.rows);
+        return resp.rows[0].OrgId;
     }
     catch (err) {
-        console.log(err)
+        res.status(400).send({ "error": "error occured while fetching orgId" })
     }
 }
 
 exports.getFabricUserListFromDB = async (req, res) => {
     const payload = req.body;
     try {
-        const response = await db.ExecuteSqlQuery(`SELECT "ID","FabricUserIdentity" FROM "Consortium_DB"."FabricUser" where "OrgId"=${getOrgID(payload.orgName)}`)
+        const response = await db.ExecuteSqlQuery(`SELECT "ID","FabricUserIdentity" FROM "Consortium_DB"."FabricUser" where "OrgId"=${await getOrgID(payload.orgName)}`)
         res.send({ fabricUserIdentityList: response.rows })
+    }
+    catch (err) {
+        res.status(400).send({ error: err });
+    }
+}
+
+exports.mapUserToFabricID = async (req, res) => {
+    const payload = req.body;
+    try {
+        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."UserFabUIDMapping"("UserId", "FabricUserIdentity") VALUES('${payload.UserId}', '${payload.FaricUserIdentity}')`)
+        res.send({ status: 'success' })
     }
     catch (err) {
         res.status(400).send({ error: err });

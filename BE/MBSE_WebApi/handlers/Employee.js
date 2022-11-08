@@ -309,13 +309,14 @@ const generatePassword = () => {
   return retVal;
 }
 
-const getOrgID = (org_name) => {
+const getOrgID = async (org_name) => {
   try {
-    return db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
-      .then((data) => data.rows[0])
+    const resp = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
+    console.log(resp.rows);
+    return resp.rows[0].OrgId;
   }
   catch (err) {
-    console.log(err)
+    res.status(400).send({ "error": "error occured while fetching orgId" })
   }
 }
 
@@ -332,7 +333,7 @@ const getRoleID = (role_name) => {
 exports.fetchUsers = async (req, res) => {
   const payload = req.body
   try {
-    const response = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Employee" WHERE "Consortium_DB"."Employee"."OrgId" = '${payload.OrgId}'`)
+    const response = await db.ExecuteSqlQuery(`SELECT "ID","Username" FROM "Consortium_DB"."Employee" WHERE "Consortium_DB"."Employee"."OrgId" = '${await getOrgID(payload.orgName)}'`)
     const userList = response.rows;
     res.send({ userList });
   }

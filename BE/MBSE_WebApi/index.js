@@ -47,7 +47,7 @@ const {
 } = require("./handlers/Project");
 
 const {
-  registerFabricUser, deleteUser, getUserList, updateFabricUser, getFabricUserListFromDB
+  registerFabricUser, deleteUser, getUserList, updateFabricUser, getFabricUserListFromDB, mapUserToFabricID
 } = require("./handlers/FabricEndPoints");
 const { getOrganizationList } = require("./handlers/organizations");
 const { getAffiliations } = require("./handlers/Affiliations");
@@ -56,11 +56,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// users routes
-// app.post("/signup", signup);
-// app.post("/login", login);
-// app.get("/blockchain/user", cors(),getUserDetails);
-// app.post("/notifications", FBAuth, markNotificationsRead);
 // Employee endpoints
 app.get("/getEmployeeDetails", cors(), getEmployeeDetails);
 app.post("/login", cors(), login);
@@ -103,6 +98,7 @@ app.post("/deleteUser", cors(), deleteUser);
 app.get("/getOrganizationList", cors(), getOrganizationList);
 app.post("/getAffiliations", cors(), getAffiliations);
 app.post("/getFabricUserList", cors(), getFabricUserListFromDB);
+app.post("/mapUserToFabricID", cors(), mapUserToFabricID);
 
 app.listen(port, () => {
   db.CreateConnection();
