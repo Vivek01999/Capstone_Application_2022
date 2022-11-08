@@ -35,7 +35,6 @@ import { ManagerProjectHomeComponent } from './CSE-project-home/CSE-project-home
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManagerProjectListComponent } from './manager-project-list/manager-project-list.component';
 import { CreateFabricUserIdentityComponent } from './create-fabricUserIdentity/create-fabricUserIdentity.component';
-import { FabricUserListComponent } from './fabric-user-list/fabric-user-list.component';
 import { UpdateFabricUserComponent } from './update-fabric-user/update-fabric-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { FabricUserIdentityListComponent } from './fabric-useridentity-list/fabric-useridentity-list.component';
@@ -72,7 +71,6 @@ import { FabricUserIdentityMappingComponent } from './fabric-user-identity-mappi
     AdminHomeComponent,
     ManagerProjectListComponent,
     CreateFabricUserIdentityComponent,
-    FabricUserListComponent,
     UpdateFabricUserComponent,
     ChangePasswordComponent,
     FabricUserIdentityListComponent,
