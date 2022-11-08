@@ -2,6 +2,7 @@ const axios = require('axios');
 const instance = axios.create({
     baseURL: 'http://localhost:3002'
 });
+const { v4: uuidv4 } = require('uuid');
 const config = require('./config.json')
 const db = require('../util/db');
 
@@ -115,9 +116,9 @@ exports.updateFabricUser = async (req, res) => {
         });
 }
 
-registerFabricUserToDB = (input) => {
+registerFabricUserToDB = async (input) => {
     try {
-        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"( "FabricUserIdentity","FabricRole","Organization","Affiliation") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}')`)
+        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"("FabricUserIdentity","FabricRole","Organization","Affiliation", "ID") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}', '${uuidv4()}')`)
         return true
     }
     catch (err) {
@@ -127,11 +128,22 @@ registerFabricUserToDB = (input) => {
 }
 
 const getOrgID = (org_name) => {
-  try {
-    return db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
-      .then((data) => data.rows[0])
-  }
-  catch (err) {
-    console.log(err)
-  }
+    try {
+        return db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Organization" WHERE "Consortium_DB"."Organization"."OrgName" = '${org_name}'`)
+            .then((data) => data.rows[0])
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+
+exports.getFabricUserListFromDB = async (req, res) => {
+    const payload = req.body;
+    try {
+        const response = await db.ExecuteSqlQuery(`SELECT "ID","FabricUserIdentity" FROM "Consortium_DB"."FabricUser" where "OrgId"=${getOrgID(payload.orgName)}`)
+        res.send({ fabricUserIdentityList: response.rows })
+    }
+    catch (err) {
+        res.status(400).send({ error: err });
+    }
 }

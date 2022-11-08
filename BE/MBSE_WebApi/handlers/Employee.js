@@ -1,26 +1,9 @@
-const { 
-  v4: uuidv4,
-} = require('uuid');
-const config = require("../util/config");
-// const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require('uuid');
 const db = require('../util/db');
-
-const {
-  validateSignupData,
-  validateLoginData,
-  reduceUserDetails,
-} = require("../util/validators");
-const axios = require('axios');
-const instance = axios.create({
-  baseURL: 'http://localhost:3001'
-});
-
-
 
 
 // Get any user's details
 exports.getEmployeeDetails = (req, res) => {
-
 
   //Input Format=> Add more properties based on the UI Mock screen
   // {
@@ -51,7 +34,7 @@ exports.getEmployeeDetails = (req, res) => {
   // try {
   //   console.log("entered getEmployeeDetails method");
   //   var allEmployees = `SELECT * FROM "Consortium_DB"."Employee"`
-  //   // let result = await db.ExecuteSqlQuery(allEmployees);\
+  //   // let result = await db.ExecuteSqlQuery(allEmployees);
   //   let result =  db.ExecuteSqlQuery(allEmployees);
   //   res.json(result.rows);
 
@@ -67,7 +50,7 @@ exports.login = (req, res) => {
     // debug
     console.log("login called")
     let input = req.body;
-    if(input.Username == 'admin'){
+    if (input.Username == 'admin') {
       input.organizationId = 0;
     }
     console.log(input)
@@ -279,28 +262,28 @@ const createOrgRole = (empID, projectID, OrgId) => {
 exports.postEmployee = (req, res) => {
   input = req.body
   const thruthvalue = createEmployee(input)
-    if (thruthvalue) {
-      res.json({
-        "user_created": true
-      })
-    }
-    else {
-      res.json({
-        "user_created": false
-      })
-    }
+  if (thruthvalue) {
+    res.json({
+      "user_created": true
+    })
+  }
+  else {
+    res.json({
+      "user_created": false
+    })
+  }
 }
 
 const createEmployee = (input) => {
   const UUID = uuidv4();
-      try {
-        db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "ID","Name","Username","Password", "OrgId","EmployeeRoleID","Created_By","Created_Date" ) VALUES( '${UUID}','${input.name}','${input.username}','${input.password}',${input.orgId}, ${input.role},'${input.created_by}','${input.date}')`)
-        return true
-      }
-      catch (err) {
-        console.log(err)
-        return false;
-      }
+  try {
+    db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."Employee"( "ID","Name","Username","Password", "OrgId","EmployeeRoleID","Created_By","Created_Date" ) VALUES( '${UUID}','${input.name}','${input.username}','${input.password}',${input.orgId}, ${input.role},'${input.created_by}','${input.date}')`)
+    return true
+  }
+  catch (err) {
+    console.log(err)
+    return false;
+  }
 
 
 
@@ -346,3 +329,15 @@ const getRoleID = (role_name) => {
   }
 }
 
+exports.fetchUsers = async (req, res) => {
+  const payload = req.body
+  try {
+    const response = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."Employee" WHERE "Consortium_DB"."Employee"."OrgId" = '${payload.OrgId}'`)
+    const userList = response.rows;
+    res.send({ userList });
+  }
+  catch (err) {
+    res.status(400).send({ error: err });
+  }
+
+}

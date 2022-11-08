@@ -15,7 +15,8 @@ const {
   getAllEmployees,
   login,
   mapEmployeeRole,
-  postEmployee
+  postEmployee,
+  fetchUsers
 } = require("./handlers/Employee");
 const {
   fileUpload,
@@ -46,7 +47,7 @@ const {
 } = require("./handlers/Project");
 
 const {
-  registerFabricUser, deleteUser, getUserList, updateFabricUser
+  registerFabricUser, deleteUser, getUserList, updateFabricUser, getFabricUserListFromDB
 } = require("./handlers/FabricEndPoints");
 const { getOrganizationList } = require("./handlers/organizations");
 const { getAffiliations } = require("./handlers/Affiliations");
@@ -66,6 +67,8 @@ app.post("/login", cors(), login);
 app.get("/getAllEmployees", cors(), getAllEmployees);
 app.post("/mapEmployeeRole", cors(), mapEmployeeRole);
 app.post("/createUser", cors(), postEmployee);
+app.post("/fetchUsers", cors(), fetchUsers);
+
 // Model endpoints
 app.get("/getAllBaseModelTemplate", cors(), getAllBaseModelTemplate);
 app.get("/getAllVariantModelTemplate", cors(), getAllVariantModelTemplate);
@@ -99,6 +102,7 @@ app.post("/updateFabricUser", cors(), updateFabricUser);
 app.post("/deleteUser", cors(), deleteUser);
 app.get("/getOrganizationList", cors(), getOrganizationList);
 app.post("/getAffiliations", cors(), getAffiliations);
+app.post("/getFabricUserList", cors(), getFabricUserListFromDB);
 
 app.listen(port, () => {
   db.CreateConnection();
