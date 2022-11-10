@@ -39,9 +39,6 @@
 		style=" text-decoration: none;">Create New Fabric User Identity in {{info}}</a></div>
 	
 			<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
-
-			
-			<!--<div class="" style="text-align: center; font-size: 3rem"><b>Register User</b></div>-->
 			
 			<form class="cen" style="padding: 40px 0px 0px 0px;">
 				<!-- Need to add validiators -->
@@ -54,11 +51,6 @@
 					<option value="peer">peer</option>
 					<option value="client">client</option>
 				</select>
-				<!-- <label for="organization">Organization</label><br>
-				<select class="form-control" name="Organization" [(ngModel)]="selected"
-					(ngModelChange)="fetchAffiliations($event)" style="width: 500px;">
-					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
-				</select><br> -->
 
 				<label for="affiliation">Department & Role</label><br>
 				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
@@ -67,14 +59,6 @@
 						{{item}}
 					</option>
 				</select>
-
-				<!-- <label for="affiliation">Role</label><br>
-				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
-					[(ngModel)]="affiliation" placeholder="affiliation">
-					<option *ngFor="let item of affiliationList">
-						{{item}}
-					</option>
-				</select> -->
 			</form>
 			<br>
 			<br>
