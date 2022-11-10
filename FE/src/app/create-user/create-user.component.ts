@@ -21,9 +21,11 @@ export class CreateUserComponent implements OnInit {
   currentUser: string = '';
   organizations = [];
   orgId: number = 0;
+  org: string = "";
   constructor(private snackBar: MatSnackBar, private userService: UserService,
     private ts: MyTestService, private router: Router, private readonly orgService: OrganizationService) {
     this.currentUser = ts.getUser();
+    this.org = ts.getInfo();
   }
 
   ngOnInit(): void {

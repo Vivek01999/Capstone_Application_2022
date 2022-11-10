@@ -14,7 +14,7 @@
     margin-left : 400px;
     max-width: 700px;
     box-sizing: border-box;
-    border: 3px solid #ccc;
+    /* border: 3px solid #ccc; */
   }
   
   .welcome{
@@ -70,4 +70,10 @@
   select[type=text]:focus {
     border: 3px solid #555;
   }
- 
+  .manager{
+    font-weight: bold;
+    font-size: 15px;
+  }
+.label{
+  font-size: 18px!important;
+}

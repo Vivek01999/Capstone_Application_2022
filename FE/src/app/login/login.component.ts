@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       selectedOrganization = this.organizations.find((org: any) => org.OrgName == this.selected)
     }
     this.userService.setInfo(this.selected, this.username);
+    this.userService.orgId = selectedOrganization.OrgId
     const payload = {
       Username: this.username,
       Password: this.password,

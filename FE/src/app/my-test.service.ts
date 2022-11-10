@@ -7,6 +7,7 @@ export class MyTestService {
 
   info: string = "";
   user: string = "";
+  orgId: number= 0;
   constructor() { }
   setproj(x:string,y:string)
   {

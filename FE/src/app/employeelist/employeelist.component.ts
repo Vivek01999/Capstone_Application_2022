@@ -22,7 +22,7 @@ export class EmployeelistComponent implements OnInit {
   getEmployeeListData() {
     this.getallemployeeservice.Employees().subscribe((result: any) => {
       if (result) {
-        this.EmployeeListData = result;
+        this.EmployeeListData = result.filter((v: any) => v.OrgId == this.ts.orgId)
         console.log("EmployeeListData", this.EmployeeListData);
       }
     });

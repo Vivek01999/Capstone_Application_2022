@@ -35,7 +35,7 @@ exports.registerFabricUser = async (req, res) => {
     instance.post('/registerUser', registerUserTemplate)
         .then(async function (response) {
             //console.log(response);
-            registerFabricUserToDB(dbPayload)
+            await registerFabricUserToDB(dbPayload)
             res.send(response.data);
 
         })
@@ -118,7 +118,7 @@ exports.updateFabricUser = async (req, res) => {
 
 registerFabricUserToDB = async (input) => {
     try {
-        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"("FabricUserIdentity","FabricRole","Organization","Affiliation", "ID") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}', '${uuidv4()}')`)
+        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"("FabricUserIdentity","FabricRole","OrgId","Affiliation", "ID") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}', '${uuidv4()}')`)
         return true
     }
     catch (err) {

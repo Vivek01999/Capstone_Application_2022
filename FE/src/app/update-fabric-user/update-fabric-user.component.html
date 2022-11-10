@@ -6,12 +6,11 @@
 </head>
 
 <body>
-	<div class="box1">
-		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome"
-				style=" text-decoration: none;"> {{org}}</a></div>
+	<div class="">
+		
 		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
 			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
-			Manager({{username}})
+			Admin({{username}})
 		</div>
 		<div style="position : absolute; left:1260px; top: 25px;">
 			<mat-menu #menu="matMenu">
@@ -34,17 +33,19 @@
 			</mat-menu>
 		</div>
 	</div>
-	<form class="formcenter">
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:17rem;font-size:2rem;font-weight:900;"><a routerLink="/adminHome"
+		style=" text-decoration: none;">Update Fabric User Identity in {{org}}</a></div>
+	<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
         <div class="">
             <br>
-            <div class="" style="text-align: center; font-size: 3rem"><b>Update Fabric User</b></div>
+            <div class="" style="text-align: center; font-size: 3rem"><b>Update Fabric User Identity</b></div>
             <br>
             <br>
             <form class="cen">
 				<label for="UserIdentity">User Identity</label><br>
 				<input type="text" id="username" name="id" [(ngModel)]="id" readonly><br>
 				<label for="role">Role</label><br>
-				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+				 <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 84%;"
 				 name="role" [(ngModel)]="type">
 				 <option value="peer">peer</option>
 				 <option value="client">client</option>
@@ -53,7 +54,7 @@
 				<input type="text" id="role" name="role" [(ngModel)]="type"><br> -->
 				<label for="affiliation">Affiliation</label><br>
 				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"><br>
-				<button (click)="updateFabricDetails()" class="btn btn-primary" type="submit" style="margin-top:20px; width: 500px;">Update</button>
+				<button (click)="updateFabricDetails()" class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:20px; width: 485px;">Update</button>
 			</form>
 			
 		</div>

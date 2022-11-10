@@ -18,6 +18,7 @@ export class DeleteFabricUserComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private fabUIDService: FabricUserIdentityService, private ts: MyTestService, private router: Router) {
     this.username = ts.getUser();
+    this.org = ts.getInfo();
   }
 
   ngOnInit(): void {

@@ -5,12 +5,12 @@
 </head>
 
 <body>
-	<div class="box1">
-		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome"
-				style=" text-decoration: none;"> {{org}}</a></div>
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:20rem"><a routerLink="/adminHome"
+		style=" text-decoration: none;"> FABRIC USER IDENTITIES REGISTRED IN {{org}}</a></div>
+	<div class="">
 		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
 			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
-			Manager({{username}})
+			Admin({{username}})
 		</div>
 		<div style="position : absolute; left:1260px; top: 25px;">
 			<mat-menu #menu="matMenu">
@@ -33,16 +33,15 @@
 			</mat-menu>
 		</div>
 	</div>
-	<div class="box2">
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="margin: 20rem; text-align: center;">
 		<br>
-		<table class="table">
+		<table class="table table-hover">
 			<thead class="thead-dark">
 				<tr class="table-active">
-					<th scope="col">Fabric User ID</th>
-					<th scope="col">Fabric Role</th>
-					<th scope="col">Edit</th>
-					<!-- <th scope="col">Status</th> -->
-					<th scope="col">Delete </th>
+					<th scope="col" style="text-align: center;">Fabric User ID</th>
+					<th scope="col" style="text-align: center;">Fabric Role</th>
+					<th scope="col" style="text-align: center;">Edit</th>
+					<th scope="col" style="text-align: center;">Delete </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -55,29 +54,20 @@
 							<mat-icon>edit</mat-icon>
 						</button>
 					</td>
-					<!-- <td> 
-                        <label class="switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state' checked>
-                            <span class="slider round"></span>
-                          </label>
-                    </td> -->
 					<td>
 						<button mat-button color="warn" [disabled]="['admin', 'peer0', 'user1', 'org1admin'].includes(item.id)" (click)="navigateToDeleteFabricUser(item)">
 							<mat-icon>delete</mat-icon>
 						</button>
-						<!-- (click)="deleteUser(item);openSnackBar(item)" -->
-						<!-- <button mat-stroked-button (click)="openSnackBar(item)">Show snack-bar</button> -->
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<button class="btn btn-primary" routerLink="/createFabricUserIdentity" type="submit"
-		style="margin-top:20px; margin-left: 480px;width: 500px;">Create a Fabric User</button>
-		<button class="btn btn-primary" routerLink="/fabricUserMapping" type="submit"
-		style="margin-top:20px; margin-left: 480px;width: 500px;">Map</button>
+	<button class="btn btn-primary btn-lg btn-block" routerLink="/createFabricUserIdentity" type="submit"
+		style="margin-top:20px; margin-left: 480px;width: 500px;">Create Fabric User Idenity</button>
+		<button class="btn btn-primary btn-lg btn-block" routerLink="/fabricUserMapping" type="submit"
+		style="margin-top:20px; margin-left: 480px;width: 500px;">Map Fabric Identity to User</button>
 	<br>
-	<!-- <button class="btn btn-primary"  type="submit" style="margin-top:20px; margin-left: 480px;width: 500px;">Enroll Admin</button> -->
 </body>
 
 </html>

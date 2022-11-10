@@ -8,13 +8,43 @@
 </head>
 
 <body>
-	<form class="formcenter">
-		<div class="">
-			<br>
-			<div class="welcome"><b>Map Fabric User Identity to User</b></div>
-			<br>
-			<br>
-			<form class="cen">
+	<div class="">
+		
+		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
+			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
+			Admin({{username}})
+		</div>
+		<div style="position : absolute; left:1260px; top: 25px;">
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<!-- <mat-icon>dialpad</mat-icon> -->
+					<span>Settings</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>voicemail</mat-icon> -->
+					<span>Profile</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span>Change Password</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span><a routerLink="">Sign out</a></span>
+				</button>
+			</mat-menu>
+		</div>
+	</div>
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:22rem;font-size:2.5rem;font-weight:600;"><a routerLink="/adminHome"
+		style=" text-decoration: none;">Map Fabric User Identity to a Local User in {{info}}</a></div>
+	
+			<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
+
+			
+			<!--<div class="" style="text-align: center; font-size: 3rem"><b>Register User</b></div>-->
+			
+			<form class="cen" style="padding: 40px 0px 0px 0px;">
+				<!-- Need to add validiators -->
 				<label>Fabric User Identity</label><br>
 				<select class="form-control"  style="width: 500px;" name="fabUserIdentity"
 					[(ngModel)]="fabUserIdentity" placeholder="Fabric User Identity">
@@ -22,6 +52,7 @@
 					<option *ngFor="let fabUID of fabUserIdentityList">{{fabUID['FabricUserIdentity']}}</option>
 				</select>
 
+				<br>
 				<label>Username</label><br>
 				<select class="form-control"  style="width: 500px;" name="username"
 					[(ngModel)]="user" placeholder="Fabric User Identity">
@@ -30,17 +61,13 @@
 				</select>
 			</form>
 			<br>
-
-
 			<br>
-			<button class="btn btn-primary" (click)="mapUsertoFID()"  style="width: 500px;margin-left: 100px">Map Fabric User Identity</button>
-		</div>
-		<p>
-			<!-- space-->
-			<br>
-			<!-- {{response}} -->
-		</p>
+			<button class="btn btn-primary btn-lg btn-block" (click)="mapUsertoFID()"  style="width: 500px;margin-left: 100px">Map Fabric User Identity</button>
+
+				<br><br>
 	</form>
+
 </body>
 
 </html>
+

@@ -55,7 +55,13 @@ export class FabricUserIdentityMappingComponent implements OnInit {
     }
     this.fabUIDService.mapFUI(payload).subscribe((res: any) => {
       console.log(res)
-    })
+      if (res.status == "success") {
+        //snackbar
+        this.snackBar.open("Successfuly Mapped Fabric User Identity "+this.fabUserIdentity+ " to local User "+this.user, "OK");
+        this.router.navigate(['/fabricUserIDList']);
+      } else {
+        this.snackBar.open("Failed to Map Fabric User Identity ", "OK");
+      }
+      })
   }
-
-}
+  }

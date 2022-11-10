@@ -4,10 +4,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
-<body>
-	<div class="box1">
-		<div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome"
-				style=" text-decoration: none;"> {{org}}</a></div>
+<body class="">
+	<div class="">
+		
 		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
 			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
 			Admin({{username}})
@@ -33,20 +32,22 @@
 			</mat-menu>
 		</div>
 	</div>
-	<div class="box2">
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:10rem"><a routerLink="/adminHome"
+		style=" text-decoration: none;"> USERS OF {{org}}</a></div>
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="margin: 6rem;">
 		<br>
-		<table class="table">
-			<thead class="thead-dark">
-				<tr class="table-active">
-					<th scope="col">Name</th>
+		<table class="table table-bordered table-hover" style="text-align:center">
+			<thead class="thead-dark" >
+				<tr class="table-active" >
+					<th scope="col" style="text-align:center">Name</th>
 
-					<th scope="col">User Name</th>
+					<th scope="col" style="text-align:center">User Name</th>
 
-					<th scope="col">Role</th>
+					<th scope="col" style="text-align:center">Role</th>
 
-					<th scope="col">CreatedBy</th>
+					<th scope="col" style="text-align:center">CreatedBy</th>
 
-					<th scope="col">CreatedDate</th>
+					<th scope="col" style="text-align:center">CreatedDate</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,6 +64,8 @@
 		<!-- <div style="position : absolute; left:1130px; top:625px;"><div class="blockchain">Data Stored in Blockchain</div></div>
  			<div style="position : absolute; left:1260px; top:625px;"><div class="database">Data Stored in Local DB</div></div> -->
 	</div>
+	<button class="btn btn-primary btn-lg btn-block" routerLink="/createUser" type="submit"
+		style="margin-top:20px; margin-left: 480px;width: 500px;">Register New User</button>
 </body>
 
 </html>

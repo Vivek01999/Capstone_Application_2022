@@ -5,7 +5,7 @@
  		</title>
  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	</head>
- 	<body>
+ 	<body class="">
  	<div class="">
  		
  		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu"> <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon> Admin({{username}})</div>
@@ -38,8 +38,8 @@
 					<div class="card-body" style="text-align: -webkit-center;">
 							<div ><a routerLink="/adminHome" style="text-align: left;"> {{org}}</a><br>
 							<br><br>
-								<!-- <a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"><img src="assets/img/cloudserver.png" width="35" height="30" alt="cloudserver"></div><br><mat-icon class="icon-display">sor_account</mat-icon><br><br><div class="bluecolor">User</div></div></a> -->
-								<a routerLink="/userdashboard" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"></div><br><br>User</div></a>
+								
+								<a routerLink="/employeelist" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"></div><br><br>User</div></a>
 								
 								<a routerLink="/fabricUserIDList" style=" text-decoration: none;"><div class="rectangleBlueBox bluecolor card shadow-lg p-3 mb-5 bg-body rounded" style=""><div style="left: 190px; position: absolute;"></div><br>Fabric<br>User</div></a>
 							</div>

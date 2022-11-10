@@ -6,12 +6,10 @@
 </head>
 
 <body>
-    <div class="box1">
-        <div style="position : relative; left:10px; top: 0px;"><a routerLink="/adminHome"
-                style=" text-decoration: none;"> {{org}}</a></div>
+    <div class="">
         <div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
             <mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
-            Manager({{username}})
+            Admin({{username}})
         </div>
         <div style="position : absolute; left:1260px; top: 25px;">
             <mat-menu #menu="matMenu">
@@ -34,7 +32,10 @@
             </mat-menu>
         </div>
     </div>
-    <form class="formcenter">
+    <div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:17rem;font-size:2rem;font-weight:900;"><a routerLink="/adminHome"
+		style=" text-decoration: none;">Delete Fabric User Identity in {{org}}</a></div>
+	
+    <form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
         <div class="">
             <br>
             <div class="" style="text-align: center; font-size: 3rem"><b>Delete Fabric User</b></div>
@@ -44,7 +45,7 @@
                 <label for="UserIdentity">User Identity</label><br>
                 <input type="text" name="userIdentity" [(ngModel)]="userIdentity" readonly><br>
                 <label for="reason">Reason</label><br>
-                <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;"
+                <select type="text" class="form-control" id="exampleFormControlInput1" style="width: 84%;"
                     name="reason" [(ngModel)]="reason">
                     <option value="unspecified">unspecified</option>
                     <option value="keycompromise">keycompromise</option>
@@ -60,7 +61,7 @@
             </form>
             <br>
             <br>
-            <button (click)="deleteFabricUser()" class="btn btn-primary" type="submit" style="width: 500px;margin-left: 100px;background-color:#eb1f1f;">Delete</button>
+            <button (click)="deleteFabricUser()" class="btn btn-primary btn-lg btn-block" type="submit" style="width: 72%;margin-left: 98px;background-color:#eb1f1f;">Delete</button>
         </div>
         <br>
     </form>

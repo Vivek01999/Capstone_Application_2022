@@ -8,49 +8,81 @@
 </head>
 
 <body>
-	<form class="formcenter">
-		<div class="">
-			<br>
-			<div class="" style="text-align: center; font-size: 3rem"><b>Create an Fabric User Identity</b></div>
-			<br>
-			<br>
-			<form class="cen">
+	<div class="">
+		
+		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
+			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
+			Admin({{username}})
+		</div>
+		<div style="position : absolute; left:1260px; top: 25px;">
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<!-- <mat-icon>dialpad</mat-icon> -->
+					<span>Settings</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>voicemail</mat-icon> -->
+					<span>Profile</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span>Change Password</span>
+				</button>
+				<button mat-menu-item>
+					<!-- <mat-icon>notifications_off</mat-icon> -->
+					<span><a routerLink="">Sign out</a></span>
+				</button>
+			</mat-menu>
+		</div>
+	</div>
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:22rem;font-size:2.5rem;font-weight:600;"><a routerLink="/adminHome"
+		style=" text-decoration: none;">Create New Fabric User Identity in {{info}}</a></div>
+	
+			<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
+
+			
+			<!--<div class="" style="text-align: center; font-size: 3rem"><b>Register User</b></div>-->
+			
+			<form class="cen" style="padding: 40px 0px 0px 0px;">
+				<!-- Need to add validiators -->
 				<label for="UserIdentity">User Identity</label><br>
 				<input type="text" id="UserIdentity" name="UserIdentity" [(ngModel)]="userIdentity" value=""><br>
 
 				<label for="role">Role</label><br>
-				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 500px;" name="role"
+				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 84%;" name="role"
 					[(ngModel)]="role" placeholder="role">
 					<option value="peer">peer</option>
 					<option value="client">client</option>
 				</select>
-				<label for="organization">Organization</label><br>
+				<!-- <label for="organization">Organization</label><br>
 				<select class="form-control" name="Organization" [(ngModel)]="selected"
 					(ngModelChange)="fetchAffiliations($event)" style="width: 500px;">
 					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
-				</select><br>
+				</select><br> -->
 
-				<label for="affiliation">Affiliation</label><br>
-				<select type="text" class="form-control" id="affiliation" style="width: 500px;" name="affiliation"
+				<label for="affiliation">Department & Role</label><br>
+				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
 					[(ngModel)]="affiliation" placeholder="affiliation">
 					<option *ngFor="let item of affiliationList">
 						{{item}}
 					</option>
 				</select>
+
+				<!-- <label for="affiliation">Role</label><br>
+				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
+					[(ngModel)]="affiliation" placeholder="affiliation">
+					<option *ngFor="let item of affiliationList">
+						{{item}}
+					</option>
+				</select> -->
 			</form>
 			<br>
-
-
 			<br>
-			<button class="btn btn-primary" (click)="createuser()" type="submit"
-				style="width: 500px;margin-left: 100px">Register & Enroll</button>
-		</div>
-		<p>
-			<!-- space-->
-			<br>
-			{{response}}
-		</p>
+			<button class="btn btn-primary btn-lg btn-block" (click)="createuser()" type="submit"
+				style="width: 72%;margin-left: 97px">Register & Enroll</button>
+				<br><br>
 	</form>
+
 </body>
 
 </html>

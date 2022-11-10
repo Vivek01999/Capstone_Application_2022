@@ -31,7 +31,7 @@
 				<input type="password" name="password" [(ngModel)]="password" class="form-control"
 					id="exampleFormControlInput1" style="width:50%;" placeholder="password">
 				<br>
-				<b>Select the Organization:</b>
+				<b>Select the Organization</b>
 				<select class="form-control" name="Organization" [(ngModel)]="selected" style="width:50%;">
 					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
 				</select>

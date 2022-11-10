@@ -76,11 +76,12 @@ export class CreateFabricUserIdentityComponent implements OnInit {
   fetchAffiliations(event: any) {
     const payload = {
       "orgName": event,
-      "orgId": 1
+      "orgId": this.info
     }
     this.orgService.getAffiliations(payload).subscribe(res => {
       if (res) {
         this.affiliationList = res.affiliations;
+        this.affiliation = this.affiliationList[0];
       }
     }, err => {
       console.log(err);
