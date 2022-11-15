@@ -57,7 +57,7 @@ export class FabricUserIdentityMappingComponent implements OnInit {
       console.log(res)
       if (res.status == "success") {
         //snackbar
-        this.snackBar.open("Successfuly Mapped Fabric User Identity "+this.fabUserIdentity+ " to local User "+this.user, "OK");
+        this.snackBar.open("Successfuly Mapped "+this.fabUserIdentity+ " to "+this.user, "OK");
         this.router.navigate(['/fabricUserIDList']);
       } else {
         this.snackBar.open("Failed to Map Fabric User Identity ", "OK");

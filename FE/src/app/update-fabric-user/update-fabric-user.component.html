@@ -52,8 +52,16 @@
 			 </select>
 				<!-- <label for="role">Role</label><br>
 				<input type="text" id="role" name="role" [(ngModel)]="type"><br> -->
-				<label for="affiliation">Affiliation</label><br>
-				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"><br>
+				<!-- <label for="affiliation">Affiliation</label><br>
+				<input type="text" id="affiliation" name="affiliation" [(ngModel)]="affiliation"><br> -->
+
+				<label for="affiliation">Department & Role</label><br>
+				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
+					[(ngModel)]="affiliation" placeholder="affiliation">
+					<option *ngFor="let item of affiliationList">
+						{{item}}
+					</option>
+				</select>
 				<button (click)="updateFabricDetails()" class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:20px; width: 485px;">Update</button>
 			</form>
 			

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MyTestService } from '../my-test.service';
 import { GetAllEmployeesservice } from '../services/GetAllEmployees.sercvice';
 import { FabricUserIdentityService } from '../services/fabric-userIdentity.service';
+import { OrganizationService } from '../services/organization.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -18,9 +19,10 @@ export class UpdateFabricUserComponent implements OnInit {
   id: any = "";
   type: any = "";
   affiliation: any = "";
+  affiliationList = [];
   public EmployeeListData: any[] = [];
   constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice,
-    private router: Router, private fabUIDService: FabricUserIdentityService) {
+    private router: Router, private fabUIDService: FabricUserIdentityService, private readonly orgService: OrganizationService) {
     this.org = ts.getInfo();
     this.username = ts.getUser();
   }
@@ -33,6 +35,7 @@ export class UpdateFabricUserComponent implements OnInit {
     this.id = this.userInfo.id;
     this.type = this.userInfo.type;
     this.affiliation = this.userInfo.affiliation;
+    this.fetchAffiliations(this.org);
   }
 
   updateFabricDetails() {
@@ -54,5 +57,19 @@ export class UpdateFabricUserComponent implements OnInit {
         this.router.navigate(['/fabricUserIDList']);
       }
     })
+  }
+  fetchAffiliations(event: any) {
+    const payload = {
+      "orgName": event,
+      "orgId": this.org
+    }
+    this.orgService.getAffiliations(payload).subscribe(res => {
+      if (res) {
+        this.affiliationList = res.affiliations;
+        this.affiliation = this.affiliationList[0];
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 }

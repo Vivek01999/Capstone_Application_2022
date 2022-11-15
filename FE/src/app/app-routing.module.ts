@@ -33,7 +33,7 @@ import { FabricUserIdentityMappingComponent } from './fabric-user-identity-mappi
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [CanActivateTeam] },
+  { path: 'userdashboard', component: AdminDashboardComponent, canActivate: [CanActivateTeam] },
   { path: 'projectdashboard', component: ProjectDashboardComponent, canActivate: [CanActivateTeam] },
   { path: 'userdashboard', component: UserHomepageComponent, canActivate: [CanActivateTeam] },
   { path: 'modeldashboard', component: ModelHomepageComponent, canActivate: [CanActivateTeam] },

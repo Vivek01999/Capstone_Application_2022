@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       //todo local token
       console.log(this.user)
       if (this.user.RoleName == "User" && this.user.isValid) {
-        this.router.navigate(['/admindashboard'])
+        this.router.navigate(['/userdashboard'])
       }
       else if (this.user.RoleName == "Admin" && this.user.isValid) {
         this.router.navigate(['/adminHome'])

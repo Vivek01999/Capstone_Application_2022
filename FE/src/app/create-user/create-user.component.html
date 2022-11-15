@@ -49,12 +49,12 @@
 				<input type="text" id="name" name="name" [(ngModel)]="name" value=""><br>
 				<label for="username" style="font-size:medium;">Username</label><br>
 				<input type="text" id="username" name="username" [(ngModel)]="username" required value=""><br>
-				<label for="password" style="font-size:medium;">Password</label><br>
+				<label for="password" style="font-size:medium;">Password (Temporary)</label><br>
 				<input type="password" id="password" name="password" [(ngModel)]="password" value=""><br>
-				<label for="organization" style="font-size:medium;">Organization</label><br>
+				<!-- <label for="organization" style="font-size:medium;">Organization</label><br>
 				<select class="form-control" name="Organization" [(ngModel)]="selected" style="width: 84%;">
 					<option *ngFor="let org of organizations">{{org['OrgName']}}</option>
-				</select><br>
+				</select><br> -->
 				<label for="employeeRole" style="font-size:medium;">EmployeeRole</label><br>
 				<select type="text" class="form-control" id="exampleFormControlInput1" style="width:84%;"
 					name="employeeRole" [(ngModel)]="employeeRole">
