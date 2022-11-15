@@ -77,9 +77,11 @@ exports.deleteUser = async (req, res) => {
     };
     instance.post('/deleteUser', deleteUserTemplate)
         .then(async function (response) {
+            this.deleteFabricUserFromDB(req.body.deleteUser.userIdentity);
             res.send(response.data);
         })
         .catch(function (error) {
+
             console.log(error);
         });
 
@@ -157,5 +159,16 @@ exports.mapUserToFabricID = async (req, res) => {
     }
     catch (err) {
         res.status(400).send({ error: err });
+    }
+}
+
+deleteFabricUserFromDB = async (fabUserId) => {
+    try {
+        await db.ExecuteSqlQuery(`DELETE FROM "Consortium_DB"."FabricUser" where "fabUserId"=${fabUserId}`)
+        return true
+    }
+    catch (err) {
+        console.log(err)
+        return false;
     }
 }
