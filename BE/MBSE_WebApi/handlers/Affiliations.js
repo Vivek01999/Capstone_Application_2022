@@ -6,8 +6,15 @@ exports.getAffiliations = async (req, res) => {
   console.log(req.body)
   const orgId = await getOrgID(payload.orgName)
   try {
-    const response = await db.ExecuteSqlQuery(`SELECT "Affiliation" FROM "Consortium_DB"."OrgAffiliations" WHERE "OrgId" = ${orgId}`)
-    const affiliations = response.rows.map(val => val.Affiliation);
+    const response = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."OrgAffiliations" WHERE "OrgId" = ${orgId}`)
+    console.log(response.rows);
+    // const affiliations = response.rows.group(({Department}) => Department);
+    const affiliations = response.rows.reduce((group, row) => {
+      const { Department } = row;
+      group[Department] = group[Department] ?? [];
+      group[Department].push(row);
+      return group;
+    }, {});
     res.send({ affiliations });
   }
   catch (error) {

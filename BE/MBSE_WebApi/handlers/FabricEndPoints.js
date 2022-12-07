@@ -47,20 +47,23 @@ exports.registerFabricUser = async (req, res) => {
 exports.getUserList = async (req, res) => {
     console.log('request', req.body);
     //const payload = req.body;
-    const userListTemplate = {
-        "adminDetails": {
-            "caAuth": config.caAuth,
-            "wallet": config.wallet,
-            "adminIdentity": req.body.adminIdentity
-        }
-    }
-    instance.post('/getUserList', userListTemplate)
-        .then(async function (response) {
-            res.send(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    // const userListTemplate = {
+    //     "adminDetails": {
+    //         "caAuth": config.caAuth,
+    //         "wallet": config.wallet,
+    //         "adminIdentity": req.body.adminIdentity
+    //     }
+    // }
+    // instance.post('/getUserList', userListTemplate)
+    //     .then(async function (response) {
+    //         res.send(response.data);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+    const response = await db.ExecuteSqlQuery(`SELECT * FROM "Consortium_DB"."FabricUser"`);
+    console.log(response.rows)
+    res.send(response.rows);
 
 }
 
@@ -120,7 +123,7 @@ exports.updateFabricUser = async (req, res) => {
 
 registerFabricUserToDB = async (input) => {
     try {
-        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"("FabricUserIdentity","FabricRole","OrgId","Affiliation", "ID") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}', '${uuidv4()}')`)
+        await db.ExecuteSqlQuery(`INSERT into "Consortium_DB"."FabricUser"("FabricUserIdentity","FabricRole","OrgId","Affiliation", "Id") VALUES( '${input.FaricUserIdentity}','${input.FabricRole}','${input.Organization}','${input.Affiliation}', '${uuidv4()}')`)
         return true
     }
     catch (err) {
@@ -143,7 +146,7 @@ const getOrgID = async (org_name) => {
 exports.getFabricUserListFromDB = async (req, res) => {
     const payload = req.body;
     try {
-        const response = await db.ExecuteSqlQuery(`SELECT "ID","FabricUserIdentity" FROM "Consortium_DB"."FabricUser" where "OrgId"=${await getOrgID(payload.orgName)}`)
+        const response = await db.ExecuteSqlQuery(`SELECT "Id","FabricUserIdentity" FROM "Consortium_DB"."FabricUser" where "OrgId"=${await getOrgID(payload.orgName)}`)
         res.send({ fabricUserIdentityList: response.rows })
     }
     catch (err) {

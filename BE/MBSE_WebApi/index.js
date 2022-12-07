@@ -91,13 +91,13 @@ app.get("/getAllProjectsList", cors(), getAllProjectsList);
 app.get("/getFileDetails/:docId", cors(), getFileDetails);
 app.get("/getSingleFileDetails/:fileName", cors(), getSingleFileDetails);
 app.get("/getSingleFileDetails/uploads/:fileName", cors(), getSingleFileDetails);
-app.post("/registerUser", registerFabricUser);
-app.post("/getUserList", cors(), getUserList);
+app.post("/registerFabricUser", registerFabricUser);
+app.post("/getFabricUserList", cors(), getUserList);
 app.post("/updateFabricUser", cors(), updateFabricUser);
-app.post("/deleteUser", cors(), deleteUser);
+app.post("/deleteFabricUser", cors(), deleteUser);
 app.get("/getOrganizationList", cors(), getOrganizationList);
 app.post("/getAffiliations", cors(), getAffiliations);
-app.post("/getFabricUserList", cors(), getFabricUserListFromDB);
+app.post("/getFabricUIDList", cors(), getFabricUserListFromDB);
 app.post("/mapUserToFabricID", cors(), mapUserToFabricID);
 
 app.listen(port, () => {
