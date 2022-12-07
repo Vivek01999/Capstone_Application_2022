@@ -27,7 +27,7 @@ export class DeleteFabricUserComponent implements OnInit {
       this.router.navigate(['/fabricUserIDList']);
     }
     this.userInfo = JSON.parse(this.userInfo);
-    this.userIdentity = this.userInfo.id;
+    this.userIdentity = this.userInfo.FabricUserIdentity;
   }
 
   deleteFabricUser() {

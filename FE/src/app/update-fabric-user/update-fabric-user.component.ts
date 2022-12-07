@@ -21,6 +21,13 @@ export class UpdateFabricUserComponent implements OnInit {
   affiliation: any = "";
   affiliationList = [];
   public EmployeeListData: any[] = [];
+  organizations = [];
+  departmentList: any = []
+  department = ''
+  roleList: any = []
+  affRole = ''
+  orgId = 0;
+  selected: string = "";
   constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private ts: MyTestService, private getallemployeeservice: GetAllEmployeesservice,
     private router: Router, private fabUIDService: FabricUserIdentityService, private readonly orgService: OrganizationService) {
     this.org = ts.getInfo();
@@ -28,12 +35,13 @@ export class UpdateFabricUserComponent implements OnInit {
   }
   ngOnInit(): void {
     this.userInfo = this.route.snapshot.paramMap.get("userInfo");
+    
     if (!this.userInfo) {
       this.router.navigate(['/fabricUserIDList']);
     }
     this.userInfo = JSON.parse(this.userInfo);
-    this.id = this.userInfo.id;
-    this.type = this.userInfo.type;
+    this.id = this.userInfo.FabricUserIdentity;
+    this.type = this.userInfo.FabricRole;
     this.affiliation = this.userInfo.affiliation;
     this.fetchAffiliations(this.org);
   }
@@ -43,7 +51,7 @@ export class UpdateFabricUserComponent implements OnInit {
       updateUser: {
         id: this.id,
         type: this.type,
-        affiliation: this.affiliation
+        affiliation: this.department + '.'+ this.affRole
       }
     }
     console.log(payload);
@@ -58,6 +66,25 @@ export class UpdateFabricUserComponent implements OnInit {
       }
     })
   }
+
+  fetchOrganizationList() {
+    this.orgService.getOrganizationList().subscribe(res => {
+      if (res) {
+        if (this.ts.user == 'admin') {
+          this.organizations = res;
+        } else {
+          this.organizations = res.filter((org: any) => org.OrgName == this.ts.info);
+        }
+        const firstValue: any = this.organizations[0];
+        this.selected = firstValue.OrgName;
+        this.orgId = firstValue.OrgId;
+        this.fetchAffiliations(this.selected);
+      }
+    }, err => {
+      console.log(err);
+    });
+  }
+
   fetchAffiliations(event: any) {
     const payload = {
       "orgName": event,
@@ -66,10 +93,19 @@ export class UpdateFabricUserComponent implements OnInit {
     this.orgService.getAffiliations(payload).subscribe(res => {
       if (res) {
         this.affiliationList = res.affiliations;
-        this.affiliation = this.affiliationList[0];
+        this.departmentList = Object.keys(this.affiliationList);
+        this.department = this.departmentList[0];
+        console.log(this.departmentList)
+        this.filterRoles(this.departmentList[0])
       }
     }, err => {
       console.log(err);
     });
+  }
+
+  filterRoles(dept: any) {
+    this.roleList = this.affiliationList[dept];
+    this.affRole = this.roleList[0].Role;
+
   }
 }

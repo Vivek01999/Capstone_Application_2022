@@ -16,11 +16,15 @@ export class CreateFabricUserIdentityComponent implements OnInit {
   selected: string = "";
   response: string = '';
   role: string = '';
-  affiliation: string = '';
+  affiliation = '';
   affiliationList = [];
   userIdentity: string = '';
   organizations = [];
   info: string = '';
+  departmentList: any = []
+  department = ''
+  roleList: any = []
+  affRole = ''
   orgId = 0;
   constructor(private snackBar: MatSnackBar, private fabUIDService: FabricUserIdentityService, private ts: MyTestService,
     private router: Router, private readonly orgService: OrganizationService) {
@@ -37,7 +41,7 @@ export class CreateFabricUserIdentityComponent implements OnInit {
       "registerUser": {
         "userIdentity": this.userIdentity,
         "role": this.role,
-        "affiliation": this.affiliation,
+        "affiliation": this.department + '.'+ this.affRole,
         "organization": this.info
       }
     }
@@ -81,11 +85,20 @@ export class CreateFabricUserIdentityComponent implements OnInit {
     this.orgService.getAffiliations(payload).subscribe(res => {
       if (res) {
         this.affiliationList = res.affiliations;
-        this.affiliation = this.affiliationList[0];
+        this.departmentList = Object.keys(this.affiliationList);
+        this.department = this.departmentList[0];
+        console.log(this.departmentList)
+        this.filterRoles(this.departmentList[0])
       }
     }, err => {
       console.log(err);
     });
+  }
+
+  filterRoles(dept: any) {
+    this.roleList = this.affiliationList[dept];
+    this.affRole = this.roleList[0].Role;
+
   }
 
 }

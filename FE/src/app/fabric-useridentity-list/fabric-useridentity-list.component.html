@@ -46,8 +46,8 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let item of userListData ">
-					<td>{{item.id}}</td>
-					<td>{{item.type}}</td>
+					<td>{{item.FabricUserIdentity}}</td>
+					<td>{{item.FabricRole}}</td>
 					
 					<td>
 						<button mat-button [disabled]="['admin', 'peer0', 'user1', 'org1admin'].includes(item.id)" (click)="navigateToUpdateFabricUser(item)">

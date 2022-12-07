@@ -32,8 +32,7 @@ export class FabricUserIdentityListComponent implements OnInit {
       .subscribe(
         result => {
           if (result) {
-            this.userListData = result.userList;
-            // .filter((v: any) => v.OrgId == this.ts.orgId)
+            this.userListData = result.filter((v: any) => v.OrgId == this.ts.orgId)
             console.log("userListData", this.userListData);
           }
         });

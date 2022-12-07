@@ -9,7 +9,7 @@
 
 <body>
 	<div class="">
-		
+
 		<div class="manager" style="position : absolute; left:1220px; top: 20px;" [matMenuTriggerFor]="menu">
 			<mat-icon style="transform: scale(1.5); position:absolute; left:-30px">account_circle</mat-icon>
 			Admin({{username}})
@@ -35,36 +35,44 @@
 			</mat-menu>
 		</div>
 	</div>
-	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded" style="text-align:center;margin:22rem;font-size:2.5rem;font-weight:600;"><a routerLink="/adminHome"
-		style=" text-decoration: none;">Create New Fabric User Identity in {{info}}</a></div>
-	
-			<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
-			
-			<form class="cen" style="padding: 40px 0px 0px 0px;">
-				<!-- Need to add validiators -->
-				<label for="UserIdentity">User Identity</label><br>
-				<input type="text" id="UserIdentity" name="UserIdentity" [(ngModel)]="userIdentity" value=""><br>
+	<div class="card shadow-lg p-3 mb-5 mt-5 bg-white rounded"
+		style="text-align:center;margin:22rem;font-size:2.5rem;font-weight:600;"><a routerLink="/adminHome"
+			style=" text-decoration: none;">Create New Fabric User Identity in {{info}}</a></div>
 
-				<label for="role">Role</label><br>
-				<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 84%;" name="role"
-					[(ngModel)]="role" placeholder="role">
-					<option value="peer">peer</option>
-					<option value="client">client</option>
-				</select>
+	<form class="formcenter card shadow-lg p-3 mb-5 mt-5 bg-white rounded">
 
-				<label for="affiliation">Department & Role</label><br>
-				<select type="text" class="form-control" id="affiliation" style="width: 84%;" name="affiliation"
-					[(ngModel)]="affiliation" placeholder="affiliation">
-					<option *ngFor="let item of affiliationList">
-						{{item}}
-					</option>
-				</select>
-			</form>
-			<br>
-			<br>
-			<button class="btn btn-primary btn-lg btn-block" (click)="createuser()" type="submit"
-				style="width: 72%;margin-left: 97px">Register & Enroll</button>
-				<br><br>
+		<form class="cen" style="padding: 40px 0px 0px 0px;">
+			<!-- Need to add validiators -->
+			<label for="UserIdentity">User Identity</label><br>
+			<input type="text" id="UserIdentity" name="UserIdentity" [(ngModel)]="userIdentity" value=""><br>
+
+			<label for="role">Fabric Role</label><br>
+			<select type="text" class="form-control" id="exampleFormControlInput1" style="width: 84%;" name="role"
+				[(ngModel)]="role" placeholder="role">
+				<option value="peer">peer</option>
+				<option value="client">client</option>
+			</select>
+
+			<label for="department">Department</label><br>
+			<select type="text" class="form-control" id="department" style="width: 84%;" name="department"
+				[(ngModel)]="department" placeholder="department" (change)="filterRoles($event)">
+				<option *ngFor="let item of departmentList">
+					{{item}}
+				</option>
+			</select>
+			<label for="affRole">Role</label><br>
+			<select type="text" class="form-control" id="affRole" style="width: 84%;" name="affRole"
+				[(ngModel)]="affRole" placeholder="affRole">
+				<option *ngFor="let item of roleList">
+					{{item.Role}}
+				</option>
+			</select>
+		</form>
+		<br>
+		<br>
+		<button class="btn btn-primary btn-lg btn-block" (click)="createuser()" type="submit"
+			style="width: 72%;margin-left: 97px">Register & Enroll</button>
+		<br><br>
 	</form>
 
 </body>

@@ -11,7 +11,7 @@ export class FabricUserIdentityService {
   constructor(private readonly http: HttpClient) { }
 
   registerFabUserIdentity(payload: any) {
-    const url = `${environment.API_URL}/registerUser`;
+    const url = `${environment.API_URL}/registerFabricUser`;
     return this.http.post(url, payload)
       .pipe(
         tap((result: any) => {
@@ -21,7 +21,7 @@ export class FabricUserIdentityService {
   }
 
   getFabUserIdentityList(payload: any) {
-    const url = `${environment.API_URL}/getUserList`;
+    const url = `${environment.API_URL}/getFabricUserList`;
     return this.http.post(url, payload)
       .pipe(
         tap((result: any) => {
@@ -31,7 +31,7 @@ export class FabricUserIdentityService {
   }
 
   deleteFabUserIdentity(payload: any) {
-    const url = `${environment.API_URL}/deleteUser`;
+    const url = `${environment.API_URL}/deleteFabricUser`;
     return this.http.post(url, payload)
       .pipe(
         tap((result: any) => {
@@ -51,7 +51,7 @@ export class FabricUserIdentityService {
   }
 
   getFabricUIDListForOrg(payload: any) {
-    const url = `${environment.API_URL}/getFabricUserList`;
+    const url = `${environment.API_URL}/getFabricUIDList`;
     return this.http.post(url, payload)
       .pipe(
         tap((result: any) => {
